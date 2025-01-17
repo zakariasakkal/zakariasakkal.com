@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: #333;
+            color: #fff;
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            color: #fff;
+        }
+        p {
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        a {
+            text-decoration: none;
+            color: #00695c;
+        }
+        a:hover {
+            color: #004d40;
+        }
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #00897b;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            z-index: 10;
+        }
+        .download-btn a {
+            color: #fff;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .download-btn a:hover {
+            background-color: #004d40;
+            padding: 12px 22px;
+            border-radius: 8px;
+            transform: scale(1.1);
+        }
+        nav {
+            background-color: #2a3d45;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 100%;
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav li {
+            text-align: center;
+            margin: 10px 0;
+        }
+        nav a {
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            display: block;
+        }
+        nav a:hover {
+            background-color: #004d40;
+            color: #ffffff;
+        }
+        section {
+            padding: 60px 20px;
+            margin-left: 220px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+        #introduction {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 0 10%;
+        }
+        .grid-container {
+    display: flex;          /* Use flexbox to align image and text */
+    gap: 20px;              /* Adds space between image and text */
+}
+
+#projects {
+    padding: 20px;
+    max-width: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 100%;
+}
+
+.project-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    text-align: left;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-card .project-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.project-content h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.project-content p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+
+       
+        .read-more {
+            background-color: #00897b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .read-more:hover {
+            background-color: #004d40;
+        }
+        footer {
+            background-color: #2a3d45;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease;
+        }
+        footer a:hover {
+            background-color: #8dc2a9;
+        }
+   
+/* Container for the images */
+.fsae-images {
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-between; /* Add space between the images */
+    align-items: center; /* Align images vertically */
+    max-width: 100%; /* Allow the container to stretch fully */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+
+/* Style for each image */
+.experience-image {
+    width: 28%; /* Reduce each image to 28% of the parent container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow */
+}
+
+
+/* Ensure responsiveness on smaller screens */
+@media (max-width: 768px) {
+    .fsae-images {
+        flex-wrap: wrap; /* Allow images to stack if needed */
+        gap: 10px; /* Add a gap between rows */
+    }
+    .experience-image {
+        width: 45%; /* Adjust image size for smaller screens */
+        margin-bottom: 10px; /* Add space below for stacking */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="download-btn">
+        <a href="Zakaria_Resume.pdf" download>Download Resume</a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#about-me">About Me</a></li>
+            <li><a href="#experiences">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="introduction">
+        <div class="slideshow-container">
+            <div class="mySlides" style="background-image: url('images/engineering-image-1.jpg');"></div>
+            <div class="mySlides" style="background-image: url('images/engineering-image-2.jpg');"></div>
+            <div class="mySlides" style="background-image: url('images/engineering-image-3.jpg');"></div>
+            <div class="overlay-text">
+                <h1>Hello there, I'm Zak!</h1>
+                <p>I’ve always been fascinated by how things work and how they can be improved.<br><br>In this space, I share projects that blend my curiosity and hands-on experience. <br><br>Each project reflects my passion for solving problems and experimenting with new ideas.<br><br>Have a look around and I hope you find something interesting.</p>
+            </div>
+        </div>
+    </section>
+    <style>
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+        }
+    </style>
+   <section id="about-me" class="visible-section">
+    <div class="about-me-content">
+        <h2>About Me</h2>
+        <img src="images/me.jpg" alt="My Image" class="my-image">
+        <p>I'm a junior studying Mechanical Engineering at the University of Minnesota. I’m passionate about cars and work with the FSAE team to design and improve vehicle systems. Outside of engineering, I love working out and staying active. I’m excited to learn more about automotive design and energy systems, and I aim to contribute to exciting projects in the future.</p>
+    </div>
+</section>
+<style>
+    #about-me {
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+    }
+    .about-me-content {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    .about-me-content p {
+        font-size: 1em;
+        line-height: 1.6;
+        margin-top: 10px;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+    .my-image {
+        max-width: 700px;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+</style>
+<section id="experiences">
+    <h2>Experience</h2>
+    <div class="experience-container">
+        <!-- Phillips and Temro Experience -->
+        <div class="experience-item">
+            <h3>Mechanical Design Intern</h3>
+            <p>Phillips and Temro Industries | Summer 2024</p>
+            <ul>
+                <li>Worked on PCB designs, heat sink simulations, and product testing.</li>
+                <li>Collaborated with engineering teams to enhance product performance and reduce thermal issues.</li>
+                <li>Conducted simulations using ANSYS and SolidWorks to optimize product designs.</li>
+            </ul>
+            <img src="images/phillips-temro1.jpg" alt="Phillips and Temro Work Image 1" class="my-image">
+            <img src="images/phillips-temro2.jpg" alt="Phillips and Temro Work Image 2" class="my-image">
+            <img src="images/phillips-temro3.jpg" alt="Phillips and Temro Work Image 3" class="my-image">
+        </div>
+       
+        <!-- FSAE Experience -->
+        <div class="experience-item">
+            <h3>FSAE</h3>
+            <p>FSAE | Summer 2024</p>
+            <ul>
+                <li>Designed and analyzed suspension systems for an EV race car.</li>
+                <li>Conducted stress testing and finite element analysis (FEA) for critical components.</li>
+                <li>Collaborated with team members to enhance vehicle performance for competition.</li>
+            </ul>
+            <img src="images/fsae1.jpg" alt="FSAE Work Image 1" class="my-image">
+            <img src="images/fsae2.jpg" alt="FSAE Work Image 2" class="my-image">
+            <img src="images/fsae3.jpg" alt="FSAE Work Image 3" class="my-image">
+        </div>
+    </div>
+</section>
+
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="grid-container">
+        <div class="project-card">
+            <div class="project-image">
+                <img class="my-image" src="images/robot1.png" alt="Project 1">
+            </div>
+            <div class="project-content">
+                <h3>Maze solving Robot</h3>
+                <p> Integrated DC motors, Servo motor, and Ultrasonic sensor, to construct a maze navigating robot.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+   
+</section>
+<section id="contact">
+    <h2>Contact</h2>
+    <p>If you'd like to get in touch, feel free to email me at <a href="mailto:zakariah@example.com">sakka008@umn.edu</a></p>
+</section>
+<footer>
+    <p>&copy; 2025 Zakaria Sakkal</p>
+    <p>Find me on <a href="https://www.linkedin.com/in/zakariasakkal" target="_blank">LinkedIn</a></p>
+</footer>
+<script>
+    let slideIndex = 0;
+    showSlides();
+    function showSlides() {
+        let slides = document.getElementsByClassName("mySlides");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 2000);
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
