@@ -59,6 +59,20 @@
             border-radius: 8px;
             transform: scale(1.1);
         }
+        /* Ensure list styles are applied */
+ul {
+    list-style-type: disc; /* Use disc bullets (default) */
+    margin-left: 20px; /* Add left margin for indentation */
+    padding-left: 20px; /* Add padding for additional spacing */
+    color: #fff; /* Ensure text color is visible */
+}
+
+
+li {
+    margin-bottom: 10px; /* Add spacing between list items */
+}
+
+
         nav {
             background-color: #2a3d45;
             position: fixed;
@@ -71,6 +85,11 @@
             flex-direction: column;
             align-items: center;
         }
+   
+
+
+
+
         nav ul {
             list-style-type: none;
             padding: 0;
@@ -138,47 +157,52 @@
     gap: 20px;              /* Adds space between image and text */
 }
 
-#projects {
-    padding: 20px;
-    max-width: 100%;
-    overflow: hidden;
-    text-align: center;
+
+
+
+.robot-text-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    align-items: center; /* Vertically align items */
+    justify-content: center; /* Horizontally align items */
+    gap: 20px; /* Add spacing between image and text */
+    margin: 20px auto; /* Center the container */
+    max-width: 1200px; /* Limit the container width */
+    padding: 20px; /* Add padding for spacing */
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 100%;
+.robot-image {
+    flex: 1 1 300px; /* Make the image take up some space and adjust responsively */
+    max-width: 400px; /* Set a max width for the image */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 8px; /* Add optional rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
 }
 
-.project-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #f9f9f9;
-    text-align: left;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.robot-text {
+    flex: 2 1 500px; /* Make text take up more space */
+    font-size: 1.2rem; /* Increase font size for readability */
+    color: white; /* Ensure text color is visible on the background */
+    line-height: 1.5; /* Improve readability */
+    text-align: justify; /* Align text for a cleaner look */
 }
 
-.project-card .project-image img {
-    width: 100%;
-    height: auto;
-    display: block;
+@media (max-width: 768px) {
+    .robot-text-container {
+        flex-direction: column; /* Stack image and text on smaller screens */
+        text-align: center; /* Center text for smaller devices */
+    }
+
+    .robot-image {
+        width: 80%; /* Resize the image for smaller screens */
+    }
+
+    .robot-text {
+        width: 100%; /* Adjust text width for smaller screens */
+    }
 }
 
-.project-content h3 {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
-}
 
-.project-content p {
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
-}
 
 
        
@@ -221,6 +245,8 @@
 }
 
 
+
+
 /* Style for each image */
 .experience-image {
     width: 28%; /* Reduce each image to 28% of the parent container */
@@ -228,6 +254,8 @@
     border-radius: 8px; /* Optional rounded corners */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow */
 }
+
+
 
 
 /* Ensure responsiveness on smaller screens */
@@ -240,6 +268,43 @@
         width: 45%; /* Adjust image size for smaller screens */
         margin-bottom: 10px; /* Add space below for stacking */
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Ensure the container doesn't overflow */
+.container {
+  width: 100%; /* Make it responsive */
+  max-width: 90%; /* Prevent it from getting too wide */
+  margin: 0 auto; /* Center the container */
+  overflow-wrap: break-word; /* Break text if too long */
+  word-wrap: break-word; /* Legacy support */
+  white-space: normal; /* Allow text to wrap */
+}
+
+
+/* Ensure font-size adjusts to screen size */
+.text {
+  font-size: calc(1rem + 0.5vw); /* Responsive font size */
+  line-height: 1.5; /* Improve readability */
+}
+
+
+/* If using flexbox to structure the layout */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: center; /* Center content */
+  align-items: flex-start; /* Align items at the top */
 }
 
 
@@ -330,41 +395,51 @@
         margin-top: 20px;
     }
 </style>
+
+
+
+
 <section id="experiences">
     <h2>Experience</h2>
-    <div class="experience-container">
-        <!-- Phillips and Temro Experience -->
-        <div class="experience-item">
-            <h3>Mechanical Design Intern</h3>
-            <p>Phillips and Temro Industries | Summer 2024</p>
-            <ul>
-                <li> Performed lab testing on connectors to reduce insertion force from 100N to under 75N per GM
-                    standards, experimenting with pin size, grease, and seals.</li>
-                <li>Designed and tested vibration fixtures; validated results with ANSYS simulations.</li>
-                <li> Designed a PCB enclosure for the EvoCharge charging tower and performed thermal simulations to
-                    ensure effective cooling.</li>
-            </ul>
+    <div>
+        <h3>Phillips and Temro Industries</h3>
+        <ul>
+            <li>Performed lab testing on connectors to reduce insertion force from 100N to under 75N per GM
+                standards, experimenting with pin size, grease, and seals.</li>
+            <li>Designed and tested vibration fixtures; validated results with ANSYS simulations.</li>
+            <li>Designed a PCB enclosure for the EvoCharge charging tower and performed thermal simulations to
+                ensure effective cooling.</li>
+        </ul>
+    </div>
+    <div>
             <img src="images/phillips-temro1.jpg" alt="Phillips and Temro Work Image 1" class="my-image">
             <img src="images/phillips-temro2.jpg" alt="Phillips and Temro Work Image 2" class="my-image">
             <img src="images/phillips-temro3.jpg" alt="Phillips and Temro Work Image 3" class="my-image">
         </div>
        
-        <!-- FSAE Experience -->
-        <div class="experience-item">
-            <h3>FSAE</h3>
-            <p>FSAE | Summer 2024</p>
-            <ul>
-                <li>Designed and analyzed suspension systems for an EV race car.</li>
-                <li>Conducted stress testing and finite element analysis (FEA) for critical components.</li>
-                <li>Perform comprehensive heat management, including pressure drop calculations, mass flow
-                    calculations, pump selection, and sizing radiators based on dynamometer testing.</li>
-            </ul>
+        <h3>Formula SAE (FSAE) - Gopher Motorsports</h3>
+        <ul>
+            <li>Designed and analyzed suspension systems for an EV race car.</li>
+            <li>Conducted stress testing and finite element analysis (FEA) for critical components.</li>
+            <li>Perform comprehensive heat management, including pressure drop and mass flow
+                calculations, pump selection, and sizing radiators based on dynamometer testing.</li>
+
+
+        </ul>
+    </div>
+
+
             <img src="images/fsae1.jpg" alt="FSAE Work Image 1" class="my-image">
             <img src="images/fsae2.jpg" alt="FSAE Work Image 2" class="my-image">
             <img src="images/fsae3.jpg" alt="FSAE Work Image 3" class="my-image">
         </div>
     </div>
+   
 </section>
+
+
+
+
 
 
 <section id="projects">
@@ -375,12 +450,18 @@
                 <img class="my-image" src="images/robot1.png" alt="Project 1">
             </div>
             <div class="project-content">
-                <h3>Maze solving Robot</h3>
+                <h3>Robot</h3>
                 <p> Integrated DC motors, Servo motor, and Ultrasonic sensor, to construct a maze navigating robot.</p>
             </div>
         </div>
     </div>
 </section>
+
+
+
+
+
+
 
 
 
@@ -393,8 +474,10 @@
 </section>
 <footer>
     <p>&copy; 2025 Zakaria Sakkal</p>
-    <p>Find me on <a href="https://www.linkedin.com/in/zakariasakkal" target="_blank">LinkedIn</a></p>
+    <p>Find me on <a href="https://www.linkedin.com/in/zakaria-sakkal" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
 </footer>
+
+
 <script>
     let slideIndex = 0;
     showSlides();
@@ -413,12 +496,4 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
