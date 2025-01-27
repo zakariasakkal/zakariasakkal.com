@@ -216,16 +216,13 @@
       text-align: center;
     }
 
-    /* 
-      Changed max-width from 900px to 400px 
-      so the white input boxes are smaller 
-    */
+    /* Increased max-width for bigger input boxes in the Contact form */
     .contact-form {
       display: flex;
       flex-direction: column;
       gap: 15px;
       margin: 0 auto;
-      max-width: 600px; /* smaller boxes */
+      max-width: 600px; /* bigger boxes */
     }
 
     .contact-form .form-group {
@@ -423,12 +420,12 @@
         If you’d like to get in touch, whether it’s for collaborations, questions,
         or just to say hi, I’d love to hear from you!
       </p>
-      <!-- Changed max-width from 900px to 400px so white boxes are smaller -->
-      
-      <form action="https://formsubmit.co/sakka008@umn.edu" method="POST" >
-      
-
-      
+      <!-- Changed .contact-form to bigger width -->
+      <form 
+        action="https://formsubmit.co/sakka008@umn.edu" 
+        method="POST" 
+        class="contact-form"
+      >
         <div class="form-group">
           <input type="text" name="name" placeholder="Your Name" required />
         </div>
