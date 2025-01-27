@@ -203,8 +203,6 @@
       background-color: #004d40;
     }
 
-
-
     /* ---------- CONTACT SECTION ---------- */
     .contact-container {
       margin: 20px auto;
@@ -217,13 +215,19 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       text-align: center;
     }
+
+    /* 
+      Changed max-width from 900px to 400px 
+      so the white input boxes are smaller 
+    */
     .contact-form {
       display: flex;
       flex-direction: column;
       gap: 15px;
       margin: 0 auto;
-      max-width: 900px;
+      max-width: 600px; /* smaller boxes */
     }
+
     .contact-form .form-group {
       display: flex;
       flex-direction: column;
@@ -419,9 +423,12 @@
         If you’d like to get in touch, whether it’s for collaborations, questions,
         or just to say hi, I’d love to hear from you!
       </p>
-      <form action="https://formsubmit.co/ianseremetwebsite@gmail.com"
-            method="POST"
-            class="contact-form">
+      <!-- Changed max-width from 900px to 400px so white boxes are smaller -->
+      <form
+        action="https://formsubmit.co/ianseremetwebsite@gmail.com"
+        method="POST"
+        class="contact-form"
+      >
         <div class="form-group">
           <input type="text" name="name" placeholder="Your Name" required />
         </div>
@@ -436,40 +443,37 @@
     </div>
   </section>
 
-  
- <!-- Footer (Offset just like the sections) -->
-<footer id="footer" style="background-color: #2a3d45; padding: 20px; text-align: center; color: #fff;">
+  <!-- Footer (Offset just like the sections) -->
+  <footer
+    style="
+      background-color: #2a3d45;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+      margin-left: 220px;
+      width: calc(100% - 220px);
+    "
+  >
     <!-- Inline paragraph so text sits on the same line as the icon -->
-    <p 
-      style="
-        margin-bottom: 10px; 
-        display: inline;
-      "
-    >
+    <p style="margin-bottom: 10px; display: inline;">
       My LinkedIn:
     </p>
-  
+
     <!-- Anchor also inline, with a small left margin -->
-    <a 
-      href="https://www.linkedin.com/in/zakaria-sakkal/" 
-      target="_blank" 
-      style="
-        text-decoration: none;
-        display: inline;
-        margin-left: 8px;
-      "
+    <a
+      href="https://www.linkedin.com/in/zakaria-sakkal/"
+      target="_blank"
+      style="text-decoration: none; display: inline; margin-left: 8px;"
     >
       <!-- Larger square image at 32x32 -->
-      <img 
-        src="images/footer.jpg" 
-        alt="footer" 
+      <img
+        src="images/footer.jpg"
+        alt="footer"
         style="width: 32px; height: 32px; vertical-align: middle;"
       >
     </a>
   </footer>
-  
-  
-  
+
   <!-- Slideshow Script -->
   <script>
     let slideIndex = 0;
