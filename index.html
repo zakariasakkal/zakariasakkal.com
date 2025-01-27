@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>My Portfolio</title>
 
-
   <!-- Optional: FontAwesome for LinkedIn/Instagram icons -->
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /> -->
-
 
   <style>
     /* ---------- GLOBAL / RESET ---------- */
     * {
       box-sizing: border-box;
     }
-    body, html {
+
+    /* Hide any accidental horizontal overflow */
+    html, body {
       margin: 0;
       padding: 0;
+      overflow-x: hidden; /* ensures no left-right scrollbar */
     }
-
 
     /* ---------- BODY / DEFAULT STYLES ---------- */
     body {
@@ -33,9 +33,8 @@
       align-items: center;
       width: 100%;
       min-height: 100vh;
-      text-align: center;
+      text-align: center; /* center text by default */
     }
-
 
     /* ---------- DOWNLOAD RESUME BUTTON ---------- */
     .download-btn {
@@ -61,14 +60,13 @@
       transform: scale(1.1);
     }
 
-
     /* ---------- NAVIGATION ---------- */
     nav {
       background-color: #2a3d45;
       position: fixed;
       top: 0;
       left: 0;
-      width: 150px;
+      width: 220px; /* MATCH section margin-left so no horizontal scroll */
       height: 100%;
       padding-top: 30px;
       display: flex;
@@ -95,23 +93,20 @@
       background-color: #004d40;
     }
 
-
     /* ---------- SECTION LAYOUT ---------- */
     section {
       padding: 60px 20px;
-      margin-left: 220px; /* shift content so nav doesn't overlap */
-      width: 100%;
+      margin-left: 220px; /* EXACT same as nav width */
+      width: calc(100% - 220px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
 
-
     h1, h2, h3 {
       color: #fff;
     }
-
 
     /* ---------- SLIDESHOW ---------- */
     .slideshow-container {
@@ -151,10 +146,9 @@
       margin-bottom: 1em;
     }
 
-
     /* ---------- ABOUT ME ---------- */
     #about-me .about-me-content {
-      max-width: 1200px;
+      max-width: 1200px; 
       margin: 0 auto;
     }
     .my-image {
@@ -164,7 +158,6 @@
       border-radius: 8px;
       margin-top: 20px;
     }
-
 
     /* ---------- SPLIT SECTION (Image Left, Text Right) ---------- */
     .split-section {
@@ -222,34 +215,25 @@
       background-color: #004d40;
     }
 
-
     /* ---------- CONTACT SECTION (BORDERED RECTANGLE) ---------- */
-
-
-    /*
-      Center the contact container horizontally
-      and match the same style as .split-section (i.e. 90% width, max-width 1200px).
-    */
     .contact-container {
-      margin: 20px auto;          /* matches experiences/projects margin */
+      margin: 20px auto;       
       width: 90%;
-      max-width: 1200px;         /* same as .split-section */
-      border: 2px solid #888;    
-      border-radius: 10px;      
-      padding: 30px;            
+      max-width: 1200px;      
+      border: 2px solid #888;  
+      border-radius: 10px;     
+      padding: 30px;           
       background-color: #2a3d45;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      text-align: center;        /* center content inside the container */
+      text-align: center;     
     }
 
-
-    /* Larger/wider inputs for the contact form */
     .contact-form {
       display: flex;
       flex-direction: column;
       gap: 15px;
       margin: 0 auto;
-      max-width: 900px;          /* Make the white fields wide, but not too wide */
+      max-width: 900px;  
     }
     .contact-form .form-group {
       display: flex;
@@ -258,17 +242,17 @@
     .contact-form input[type="text"],
     .contact-form input[type="email"],
     .contact-form textarea {
-      width: 100%;                    
-      padding: 12px;                  
+      width: 100%; 
+      padding: 12px; 
       font-size: 16px;
       border: none;
       border-radius: 5px;
-      background-color: #fff;  
-      color: #333;            
+      background-color: #fff;
+      color: #333;
       resize: vertical;
     }
     .contact-form textarea {
-      min-height: 120px;
+      min-height: 120px; 
     }
     .submit-btn {
       background-color: #00897b;
@@ -280,12 +264,11 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       width: fit-content;
-      margin: 0 auto; /* center button horizontally */
+      margin: 0 auto; 
     }
     .submit-btn:hover {
       background-color: #004d40;
     }
-
 
     /* ---------- FOOTER ---------- */
     #footer {
@@ -305,23 +288,18 @@
       color: #00897b;
     }
 
-
     /* ---------- RESPONSIVE MEDIA QUERIES ---------- */
     @media (max-width: 768px) {
       nav {
-        width: 100px;
-      }
-      nav a {
-        font-size: 14px;
-        padding: 8px;
+        width: 150px; /* If you reduce nav width, also reduce section margin-left below */
       }
       section {
-        margin-left: 120px;
+        margin-left: 150px; 
+        width: calc(100% - 150px);
       }
       .overlay-text h1 {
         font-size: 1.8em;
       }
-      /* Stack columns vertically on small screens */
       .split-section {
         flex-direction: column;
         text-align: center;
@@ -340,13 +318,11 @@
   </style>
 </head>
 
-
 <body>
   <!-- Download Resume Button -->
   <div class="download-btn">
     <a href="Zakaria_Resume.pdf" download>Download Resume</a>
   </div>
-
 
   <!-- Navigation -->
   <nav>
@@ -358,7 +334,6 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-
 
   <!-- Introduction / Slideshow -->
   <section id="introduction">
@@ -376,26 +351,23 @@
     </div>
   </section>
 
-
   <!-- About Me Section -->
   <section id="about-me">
     <div class="about-me-content">
       <h2>About Me</h2>
       <img src="images/me.jpg" alt="My Image" class="my-image">
       <p>
-        I'm a junior studying Mechanical Engineering at the University of Minnesota. I’m passionate about
-        cars and work with the FSAE team to design and improve vehicle systems. Outside of engineering,
-        I love working out and staying active. I’m excited to learn more about automotive design
+        I'm a junior studying Mechanical Engineering at the University of Minnesota. I’m passionate about 
+        cars and work with the FSAE team to design and improve vehicle systems. Outside of engineering, 
+        I love working out and staying active. I’m excited to learn more about automotive design 
         and energy systems, and I aim to contribute to exciting projects in the future.
       </p>
     </div>
   </section>
 
-
   <!-- Experiences Section -->
   <section id="experiences">
     <h2>Experiences</h2>
-
 
     <!-- Experience #1 -->
     <div class="split-section">
@@ -405,15 +377,15 @@
       <div class="split-text">
         <h3>Formula SAE</h3>
         <p>
-          Quick overview: EV race car suspension design, stress testing,
+          Quick overview: EV race car suspension design, stress testing, 
           FEA for critical components, etc.
         </p>
+        <!-- "Learn More" -> opens a new detail page -->
         <button class="learn-more-button">
-          <a href="fsae-details.html">Learn More</a>
+          <a href="experience1-details.html" target="_blank">Learn More</a>
         </button>
       </div>
     </div>
-
 
     <!-- Experience #2 -->
     <div class="split-section">
@@ -423,21 +395,20 @@
       <div class="split-text">
         <h3>Phillips and Temro Industries</h3>
         <p>
-          Performed lab testing on connectors, designed vibration fixtures,
+          Performed lab testing on connectors, designed vibration fixtures, 
           validated solutions with ANSYS, etc.
         </p>
+        <!-- Another new detail page -->
         <button class="learn-more-button">
-          <a href="phillips-temro-details.html">Learn More</a>
+          <a href="experience2-details.html" target="_blank">Learn More</a>
         </button>
       </div>
     </div>
   </section>
 
-
   <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
-
 
     <!-- Maze Navigating Robot -->
     <div class="split-section">
@@ -450,30 +421,25 @@
           Integrated DC motors, a servo, and an ultrasonic sensor to build
           a robot that navigates mazes autonomously.
         </p>
+        <!-- Another detail page for the Robot project -->
         <button class="learn-more-button">
-          <a href="robot-project-details.html">Learn More</a>
+          <a href="robot-project-details.html" target="_blank">Learn More</a>
         </button>
       </div>
     </div>
   </section>
 
-
   <!-- Contact Section -->
   <section id="contact">
-    <!--
-      .contact-container is centered with the same margin/width approach
-      as .split-section (width: 90%; max-width: 1200px; margin: 20px auto).
-    -->
     <div class="contact-container">
       <h2>Contact Me</h2>
       <p>
-        If you’d like to get in touch, whether it’s for collaborations, questions,
+        If you’d like to get in touch, whether it’s for collaborations, questions, 
         or just to say hi, I’d love to hear from you!
       </p>
 
-
-      <form action="https://formsubmit.co/ianseremetwebsite@gmail.com"
-            method="POST"
+      <form action="https://formsubmit.co/ianseremetwebsite@gmail.com" 
+            method="POST" 
             class="contact-form">
         <div class="form-group">
           <input type="text" name="name" placeholder="Your Name" required />
@@ -489,7 +455,6 @@
     </div>
   </section>
 
-
   <!-- Footer Section -->
   <footer id="footer">
     <a href="https://www.linkedin.com/in/ian-seremet-5b1471248/" target="_blank" class="social-icon">
@@ -497,12 +462,10 @@
     </a>
   </footer>
 
-
   <!-- Slideshow Script -->
   <script>
     let slideIndex = 0;
     showSlides();
-
 
     function showSlides() {
       let slides = document.getElementsByClassName("mySlides");
@@ -523,6 +486,3 @@
   </script>
 </body>
 </html>
-
-
-
