@@ -1,499 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        body {
-            font-family: 'Space Mono', monospace;
-            background-color: #333;
-            color: #fff;
-            line-height: 1.6;
-            font-size: 16px;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        h1, h2, h3 {
-            color: #fff;
-        }
-        p {
-            color: #fff;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        a {
-            text-decoration: none;
-            color: #00695c;
-        }
-        a:hover {
-            color: #004d40;
-        }
-        .download-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #00897b;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-align: center;
-            z-index: 10;
-        }
-        .download-btn a {
-            color: #fff;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .download-btn a:hover {
-            background-color: #004d40;
-            padding: 12px 22px;
-            border-radius: 8px;
-            transform: scale(1.1);
-        }
-        /* Ensure list styles are applied */
-ul {
-    list-style-type: disc; /* Use disc bullets (default) */
-    margin-left: 20px; /* Add left margin for indentation */
-    padding-left: 20px; /* Add padding for additional spacing */
-    color: #fff; /* Ensure text color is visible */
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>My Portfolio</title>
 
 
-li {
-    margin-bottom: 10px; /* Add spacing between list items */
-}
+  <!-- Optional: FontAwesome for LinkedIn/Instagram icons -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /> -->
 
 
-        nav {
-            background-color: #2a3d45;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 150px;
-            height: 100%;
-            padding-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-   
-
-
-
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        nav li {
-            text-align: center;
-            margin: 10px 0;
-        }
-        nav a {
-            color: white;
-            font-size: 18px;
-            padding: 10px;
-            display: block;
-        }
-        nav a:hover {
-            background-color: #004d40;
-            color: #ffffff;
-        }
-        section {
-            padding: 60px 20px;
-            margin-left: 220px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-        }
-        .slideshow-container {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            height: 400px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .mySlides {
-            display: none;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-        .overlay-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 2em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            text-align: center;
-        }
-        #introduction {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            padding: 0 10%;
-        }
-        .grid-container {
-    display: flex;          /* Use flexbox to align image and text */
-    gap: 20px;              /* Adds space between image and text */
-}
-
-
-
-
-.robot-text-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    align-items: center; /* Vertically align items */
-    justify-content: center; /* Horizontally align items */
-    gap: 20px; /* Add spacing between image and text */
-    margin: 20px auto; /* Center the container */
-    max-width: 1200px; /* Limit the container width */
-    padding: 20px; /* Add padding for spacing */
-}
-
-.robot-image {
-    flex: 1 1 300px; /* Make the image take up some space and adjust responsively */
-    max-width: 400px; /* Set a max width for the image */
-    height: auto; /* Maintain the aspect ratio */
-    border-radius: 8px; /* Add optional rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
-}
-
-.robot-text {
-    flex: 2 1 500px; /* Make text take up more space */
-    font-size: 1.2rem; /* Increase font size for readability */
-    color: white; /* Ensure text color is visible on the background */
-    line-height: 1.5; /* Improve readability */
-    text-align: justify; /* Align text for a cleaner look */
-}
-
-@media (max-width: 768px) {
-    .robot-text-container {
-        flex-direction: column; /* Stack image and text on smaller screens */
-        text-align: center; /* Center text for smaller devices */
+  <style>
+    /* ---------- GLOBAL / RESET ---------- */
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
     }
 
-    .robot-image {
-        width: 80%; /* Resize the image for smaller screens */
+
+    /* ---------- BODY / DEFAULT STYLES ---------- */
+    body {
+      font-family: 'Space Mono', monospace;
+      background-color: #333;
+      color: #fff;
+      font-size: 20px;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      min-height: 100vh;
+      text-align: center;
     }
 
-    .robot-text {
-        width: 100%; /* Adjust text width for smaller screens */
+
+    /* ---------- DOWNLOAD RESUME BUTTON ---------- */
+    .download-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #00897b;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 10;
+      text-align: center;
     }
-}
-
-
-
-
-       
-        .read-more {
-            background-color: #00897b;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .read-more:hover {
-            background-color: #004d40;
-        }
-        footer {
-            background-color: #2a3d45;
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            transition: background-color 0.3s ease;
-        }
-        footer a:hover {
-            background-color: #8dc2a9;
-        }
-   
-/* Container for the images */
-.fsae-images {
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: space-between; /* Add space between the images */
-    align-items: center; /* Align images vertically */
-    max-width: 100%; /* Allow the container to stretch fully */
-    overflow: hidden; /* Prevent overflow issues */
-}
-
-
-
-
-/* Style for each image */
-.experience-image {
-    width: 28%; /* Reduce each image to 28% of the parent container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Optional rounded corners */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow */
-}
-
-
-
-
-/* Ensure responsiveness on smaller screens */
-@media (max-width: 768px) {
-    .fsae-images {
-        flex-wrap: wrap; /* Allow images to stack if needed */
-        gap: 10px; /* Add a gap between rows */
+    .download-btn a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
     }
-    .experience-image {
-        width: 45%; /* Adjust image size for smaller screens */
-        margin-bottom: 10px; /* Add space below for stacking */
+    .download-btn a:hover {
+      background-color: #004d40;
+      padding: 12px 22px;
+      border-radius: 8px;
+      transform: scale(1.1);
     }
-}
 
 
-
-
-
-
-
-
-
-
-
-
-/* Ensure the container doesn't overflow */
-.container {
-  width: 100%; /* Make it responsive */
-  max-width: 90%; /* Prevent it from getting too wide */
-  margin: 0 auto; /* Center the container */
-  overflow-wrap: break-word; /* Break text if too long */
-  word-wrap: break-word; /* Legacy support */
-  white-space: normal; /* Allow text to wrap */
-}
-
-
-/* Ensure font-size adjusts to screen size */
-.text {
-  font-size: calc(1rem + 0.5vw); /* Responsive font size */
-  line-height: 1.5; /* Improve readability */
-}
-
-
-/* If using flexbox to structure the layout */
-.flex-container {
-  display: flex;
-  flex-wrap: wrap; /* Allow items to wrap */
-  justify-content: center; /* Center content */
-  align-items: flex-start; /* Align items at the top */
-}
-
-
-
-
-
-
-
-
-
-
-    </style>
-</head>
-<body>
-    <div class="download-btn">
-        <a href="Zakaria_Resume.pdf" download>Download Resume</a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#about-me">About Me</a></li>
-            <li><a href="#experiences">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <section id="introduction">
-        <div class="slideshow-container">
-            <div class="mySlides" style="background-image: url('images/engineering-image-1.jpg');"></div>
-            <div class="mySlides" style="background-image: url('images/engineering-image-2.jpg');"></div>
-            <div class="mySlides" style="background-image: url('images/engineering-image-3.jpg');"></div>
-            <div class="overlay-text">
-                <h1>Hello there, I'm Zak!</h1>
-                <p>I’ve always been fascinated by how things work and how they can be improved.<br><br>In this space, I share projects that blend my curiosity and hands-on experience. <br><br>Each project reflects my passion for solving problems and experimenting with new ideas.<br><br>Have a look around and I hope you find something interesting.</p>
-            </div>
-        </div>
-    </section>
-    <style>
-        .overlay-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 1.2em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            text-align: center;
-            padding: 0 20px;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.2em;
-        }
-    </style>
-   <section id="about-me" class="visible-section">
-    <div class="about-me-content">
-        <h2>About Me</h2>
-        <img src="images/me.jpg" alt="My Image" class="my-image">
-        <p>I'm a junior studying Mechanical Engineering at the University of Minnesota. I’m passionate about cars and work with the FSAE team to design and improve vehicle systems. Outside of engineering, I love working out and staying active. I’m excited to learn more about automotive design and energy systems, and I aim to contribute to exciting projects in the future.</p>
-    </div>
-</section>
-<style>
-    #about-me {
-        text-align: center;
-        width: 100%;
-        padding: 20px;
+    /* ---------- NAVIGATION ---------- */
+    nav {
+      background-color: #2a3d45;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 100%;
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .about-me-content {
-        max-width: 80%;
-        margin: 0 auto;
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
     }
-    .about-me-content p {
-        font-size: 1em;
-        line-height: 1.6;
-        margin-top: 10px;
-        word-wrap: break-word;
-        white-space: normal;
+    nav li {
+      margin: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      font-size: 18px;
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #004d40;
+    }
+
+
+    /* ---------- SECTION LAYOUT ---------- */
+    section {
+      padding: 60px 20px;
+      margin-left: 220px; /* shift content so nav doesn't overlap */
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    h1, h2, h3 {
+      color: #fff;
+    }
+
+
+    /* ---------- SLIDESHOW ---------- */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mySlides {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      padding: 0 20px;
+    }
+    .overlay-text h1 {
+      font-size: 2.5em;
+      margin-bottom: 1em;
+    }
+    /* For lines you want not to wrap early */
+    .no-wrap {
+      white-space: nowrap;
+      display: block;
+      margin-bottom: 1em;
+    }
+
+
+    /* ---------- ABOUT ME ---------- */
+    #about-me .about-me-content {
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .my-image {
-        max-width: 700px;
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-top: 20px;
+      max-width: 700px;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 20px;
     }
-</style>
 
 
+    /* ---------- SPLIT SECTION (Image Left, Text Right) ---------- */
+    .split-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #2a3d45;
+      border-radius: 8px;
+      margin: 20px auto;
+      width: 90%;    
+      max-width: 1200px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+    .split-image {
+      flex: 1;
+      margin: 10px;
+    }
+    .split-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .split-text {
+      flex: 1;
+      margin: 10px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .split-text h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .split-text p {
+      margin-bottom: 20px;
+    }
+    /* Learn More Button */
+    .learn-more-button {
+      background-color: #00897b;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: fit-content;
+    }
+    .learn-more-button a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .learn-more-button:hover {
+      background-color: #004d40;
+    }
 
 
-<section id="experiences">
-    <h2>Experience</h2>
-    <div>
+    /* ---------- CONTACT SECTION (BORDERED RECTANGLE) ---------- */
+
+
+    /*
+      Center the contact container horizontally
+      and match the same style as .split-section (i.e. 90% width, max-width 1200px).
+    */
+    .contact-container {
+      margin: 20px auto;          /* matches experiences/projects margin */
+      width: 90%;
+      max-width: 1200px;         /* same as .split-section */
+      border: 2px solid #888;    
+      border-radius: 10px;      
+      padding: 30px;            
+      background-color: #2a3d45;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;        /* center content inside the container */
+    }
+
+
+    /* Larger/wider inputs for the contact form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 0 auto;
+      max-width: 900px;          /* Make the white fields wide, but not too wide */
+    }
+    .contact-form .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;                    
+      padding: 12px;                  
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;  
+      color: #333;            
+      resize: vertical;
+    }
+    .contact-form textarea {
+      min-height: 120px;
+    }
+    .submit-btn {
+      background-color: #00897b;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: fit-content;
+      margin: 0 auto; /* center button horizontally */
+    }
+    .submit-btn:hover {
+      background-color: #004d40;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+    #footer {
+      background-color: #2a3d45;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .social-icon {
+      margin: 0 10px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.5em;
+    }
+    .social-icon:hover {
+      color: #00897b;
+    }
+
+
+    /* ---------- RESPONSIVE MEDIA QUERIES ---------- */
+    @media (max-width: 768px) {
+      nav {
+        width: 100px;
+      }
+      nav a {
+        font-size: 14px;
+        padding: 8px;
+      }
+      section {
+        margin-left: 120px;
+      }
+      .overlay-text h1 {
+        font-size: 1.8em;
+      }
+      /* Stack columns vertically on small screens */
+      .split-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .split-image,
+      .split-text {
+        flex: none;
+        width: 100%;
+        margin: 10px 0;
+      }
+      .contact-container {
+        width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <!-- Download Resume Button -->
+  <div class="download-btn">
+    <a href="Zakaria_Resume.pdf" download>Download Resume</a>
+  </div>
+
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#about-me">About Me</a></li>
+      <li><a href="#experiences">Experiences</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- Introduction / Slideshow -->
+  <section id="introduction">
+    <div class="slideshow-container">
+      <div class="mySlides" style="background-image: url('images/engineering-image-1.jpg');"></div>
+      <div class="mySlides" style="background-image: url('images/engineering-image-2.jpg');"></div>
+      <div class="mySlides" style="background-image: url('images/engineering-image-3.jpg');"></div>
+      <div class="overlay-text">
+        <h1>Hello there, I'm Zak!</h1>
+        <p class="no-wrap">I’ve always been fascinated by how things work and how they can be improved.</p>
+        <p class="no-wrap">In this space, I share projects that blend my curiosity and hands-on experience.</p>
+        <p class="no-wrap">Each project reflects my passion for solving problems and experimenting with new ideas.</p>
+        <p class="no-wrap">Have a look around and I hope you find something interesting.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- About Me Section -->
+  <section id="about-me">
+    <div class="about-me-content">
+      <h2>About Me</h2>
+      <img src="images/me.jpg" alt="My Image" class="my-image">
+      <p>
+        I'm a junior studying Mechanical Engineering at the University of Minnesota. I’m passionate about
+        cars and work with the FSAE team to design and improve vehicle systems. Outside of engineering,
+        I love working out and staying active. I’m excited to learn more about automotive design
+        and energy systems, and I aim to contribute to exciting projects in the future.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- Experiences Section -->
+  <section id="experiences">
+    <h2>Experiences</h2>
+
+
+    <!-- Experience #1 -->
+    <div class="split-section">
+      <div class="split-image">
+        <img src="images/fsae1.jpg" alt="Experience 1">
+      </div>
+      <div class="split-text">
+        <h3>Formula SAE</h3>
+        <p>
+          Quick overview: EV race car suspension design, stress testing,
+          FEA for critical components, etc.
+        </p>
+        <button class="learn-more-button">
+          <a href="fsae-details.html">Learn More</a>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- Experience #2 -->
+    <div class="split-section">
+      <div class="split-image">
+        <img src="images/fsae2.jpg" alt="Experience 2">
+      </div>
+      <div class="split-text">
         <h3>Phillips and Temro Industries</h3>
-        <ul>
-            <li>Performed lab testing on connectors to reduce insertion force from 100N to under 75N per GM
-                standards, experimenting with pin size, grease, and seals.</li>
-            <li>Designed and tested vibration fixtures; validated results with ANSYS simulations.</li>
-            <li>Designed a PCB enclosure for the EvoCharge charging tower and performed thermal simulations to
-                ensure effective cooling.</li>
-        </ul>
+        <p>
+          Performed lab testing on connectors, designed vibration fixtures,
+          validated solutions with ANSYS, etc.
+        </p>
+        <button class="learn-more-button">
+          <a href="phillips-temro-details.html">Learn More</a>
+        </button>
+      </div>
     </div>
-    <div>
-            <img src="images/phillips-temro1.jpg" alt="Phillips and Temro Work Image 1" class="my-image">
-            <img src="images/phillips-temro2.jpg" alt="Phillips and Temro Work Image 2" class="my-image">
-            <img src="images/phillips-temro3.jpg" alt="Phillips and Temro Work Image 3" class="my-image">
-        </div>
-       
-        <h3>Formula SAE (FSAE) - Gopher Motorsports</h3>
-        <ul>
-            <li>Designed and analyzed suspension systems for an EV race car.</li>
-            <li>Conducted stress testing and finite element analysis (FEA) for critical components.</li>
-            <li>Perform comprehensive heat management, including pressure drop and mass flow
-                calculations, pump selection, and sizing radiators based on dynamometer testing.</li>
+  </section>
 
 
-        </ul>
-    </div>
-
-
-            <img src="images/fsae1.jpg" alt="FSAE Work Image 1" class="my-image">
-            <img src="images/fsae2.jpg" alt="FSAE Work Image 2" class="my-image">
-            <img src="images/fsae3.jpg" alt="FSAE Work Image 3" class="my-image">
-        </div>
-    </div>
-   
-</section>
-
-
-
-
-
-
-<section id="projects">
+  <!-- Projects Section -->
+  <section id="projects">
     <h2>Projects</h2>
-    <div class="grid-container">
-        <div class="project-card">
-            <div class="project-image">
-                <img class="my-image" src="images/robot1.png" alt="Project 1">
-            </div>
-            <div class="project-content">
-                <h3>Robot</h3>
-                <p> Integrated DC motors, Servo motor, and Ultrasonic sensor, to construct a maze navigating robot.</p>
-            </div>
-        </div>
+
+
+    <!-- Maze Navigating Robot -->
+    <div class="split-section">
+      <div class="split-image">
+        <img src="images/robot1.png" alt="Maze Navigating Robot">
+      </div>
+      <div class="split-text">
+        <h3>Maze Navigating Robot</h3>
+        <p>
+          Integrated DC motors, a servo, and an ultrasonic sensor to build
+          a robot that navigates mazes autonomously.
+        </p>
+        <button class="learn-more-button">
+          <a href="robot-project-details.html">Learn More</a>
+        </button>
+      </div>
     </div>
-</section>
+  </section>
 
 
+  <!-- Contact Section -->
+  <section id="contact">
+    <!--
+      .contact-container is centered with the same margin/width approach
+      as .split-section (width: 90%; max-width: 1200px; margin: 20px auto).
+    -->
+    <div class="contact-container">
+      <h2>Contact Me</h2>
+      <p>
+        If you’d like to get in touch, whether it’s for collaborations, questions,
+        or just to say hi, I’d love to hear from you!
+      </p>
 
 
+      <form action="https://formsubmit.co/ianseremetwebsite@gmail.com"
+            method="POST"
+            class="contact-form">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
 
 
+  <!-- Footer Section -->
+  <footer id="footer">
+    <a href="https://www.linkedin.com/in/ian-seremet-5b1471248/" target="_blank" class="social-icon">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </footer>
 
 
-
-
-   
-</section>
-<section id="contact">
-    <h2>Contact</h2>
-    <p>If you'd like to get in touch, feel free to email me at <a href="mailto:zakariah@example.com">sakka008@umn.edu</a></p>
-</section>
-<footer>
-    <p>&copy; 2025 Zakaria Sakkal</p>
-    <p>Find me on <a href="https://www.linkedin.com/in/zakaria-sakkal" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-</footer>
-
-
-<script>
+  <!-- Slideshow Script -->
+  <script>
     let slideIndex = 0;
     showSlides();
+
+
     function showSlides() {
-        let slides = document.getElementsByClassName("mySlides");
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }
+      let slides = document.getElementsByClassName("mySlides");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      // Show the current slide
+      if (slides[slideIndex - 1]) {
         slides[slideIndex - 1].style.display = "block";
-        setTimeout(showSlides, 2000);
+      }
+      // Change slide every 4 seconds
+      setTimeout(showSlides, 4000);
     }
-</script>
+  </script>
 </body>
 </html>
+
+
 
