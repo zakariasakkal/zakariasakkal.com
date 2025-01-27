@@ -12,28 +12,24 @@
     /* ---------- GLOBAL / RESET ---------- */
     * {
       box-sizing: border-box;
-    }
-
-    /* Hide any accidental horizontal overflow */
-    html, body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden; /* ensures no left-right scrollbar */
+    }
+    /* Hide any accidental horizontal overflow */
+    html, body {
+      overflow-x: hidden; 
     }
 
     /* ---------- BODY / DEFAULT STYLES ---------- */
     body {
+      /* Removed display: flex here, so footer is in normal flow */
       font-family: 'Space Mono', monospace;
       background-color: #333;
       color: #fff;
       font-size: 20px;
       line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       width: 100%;
-      min-height: 100vh;
-      text-align: center; /* center text by default */
+      text-align: center;
     }
 
     /* ---------- DOWNLOAD RESUME BUTTON ---------- */
@@ -60,13 +56,13 @@
       transform: scale(1.1);
     }
 
-    /* ---------- NAVIGATION ---------- */
+    /* ---------- NAVIGATION (Fixed) ---------- */
     nav {
       background-color: #2a3d45;
       position: fixed;
       top: 0;
       left: 0;
-      width: 220px; /* MATCH section margin-left so no horizontal scroll */
+      width: 220px; 
       height: 100%;
       padding-top: 30px;
       display: flex;
@@ -75,8 +71,6 @@
     }
     nav ul {
       list-style-type: none;
-      margin: 0;
-      padding: 0;
     }
     nav li {
       margin: 10px 0;
@@ -96,15 +90,12 @@
     /* ---------- SECTION LAYOUT ---------- */
     section {
       padding: 60px 20px;
-      margin-left: 220px; /* EXACT same as nav width */
-      width: calc(100% - 220px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      margin-left: 220px;             /* offset for fixed nav width */
+      width: calc(100% - 220px);      /* so no horizontal scroll */
     }
 
     h1, h2, h3 {
+      margin-bottom: 20px;
       color: #fff;
     }
 
@@ -139,7 +130,6 @@
       font-size: 2.5em;
       margin-bottom: 1em;
     }
-    /* For lines you want not to wrap early */
     .no-wrap {
       white-space: nowrap;
       display: block;
@@ -148,7 +138,7 @@
 
     /* ---------- ABOUT ME ---------- */
     #about-me .about-me-content {
-      max-width: 1200px; 
+      max-width: 1200px;
       margin: 0 auto;
     }
     .my-image {
@@ -159,7 +149,7 @@
       margin-top: 20px;
     }
 
-    /* ---------- SPLIT SECTION (Image Left, Text Right) ---------- */
+    /* ---------- SPLIT SECTION ---------- */
     .split-section {
       display: flex;
       align-items: center;
@@ -167,7 +157,7 @@
       background-color: #2a3d45;
       border-radius: 8px;
       margin: 20px auto;
-      width: 90%;    
+      width: 90%;
       max-width: 1200px;
       padding: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -191,13 +181,11 @@
       justify-content: center;
     }
     .split-text h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
     }
     .split-text p {
       margin-bottom: 20px;
     }
-    /* Learn More Button */
     .learn-more-button {
       background-color: #00897b;
       border: none;
@@ -215,25 +203,26 @@
       background-color: #004d40;
     }
 
-    /* ---------- CONTACT SECTION (BORDERED RECTANGLE) ---------- */
+
+
+    /* ---------- CONTACT SECTION ---------- */
     .contact-container {
-      margin: 20px auto;       
+      margin: 20px auto;
       width: 90%;
-      max-width: 1200px;      
-      border: 2px solid #888;  
-      border-radius: 10px;     
-      padding: 30px;           
+      max-width: 1200px;
+      border: 2px solid #888;
+      border-radius: 10px;
+      padding: 30px;
       background-color: #2a3d45;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      text-align: center;     
+      text-align: center;
     }
-
     .contact-form {
       display: flex;
       flex-direction: column;
       gap: 15px;
       margin: 0 auto;
-      max-width: 900px;  
+      max-width: 900px;
     }
     .contact-form .form-group {
       display: flex;
@@ -242,8 +231,8 @@
     .contact-form input[type="text"],
     .contact-form input[type="email"],
     .contact-form textarea {
-      width: 100%; 
-      padding: 12px; 
+      width: 100%;
+      padding: 12px;
       font-size: 16px;
       border: none;
       border-radius: 5px;
@@ -252,7 +241,7 @@
       resize: vertical;
     }
     .contact-form textarea {
-      min-height: 120px; 
+      min-height: 120px;
     }
     .submit-btn {
       background-color: #00897b;
@@ -264,19 +253,20 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       width: fit-content;
-      margin: 0 auto; 
+      margin: 0 auto;
     }
     .submit-btn:hover {
       background-color: #004d40;
     }
 
-    /* ---------- FOOTER ---------- */
-    #footer {
+    /* ---------- FOOTER (Same offset as section) ---------- */
+    footer {
       background-color: #2a3d45;
-      width: 100%;
       padding: 20px;
-      text-align: center;
       color: #fff;
+      text-align: center;
+      margin-left: 220px;             /* offset to not be behind nav */
+      width: calc(100% - 220px);      /* same as sections */
     }
     .social-icon {
       margin: 0 10px;
@@ -291,10 +281,14 @@
     /* ---------- RESPONSIVE MEDIA QUERIES ---------- */
     @media (max-width: 768px) {
       nav {
-        width: 150px; /* If you reduce nav width, also reduce section margin-left below */
+        width: 150px;
       }
       section {
-        margin-left: 150px; 
+        margin-left: 150px;
+        width: calc(100% - 150px);
+      }
+      footer {
+        margin-left: 150px;
         width: calc(100% - 150px);
       }
       .overlay-text h1 {
@@ -306,7 +300,6 @@
       }
       .split-image,
       .split-text {
-        flex: none;
         width: 100%;
         margin: 10px 0;
       }
@@ -317,7 +310,6 @@
     }
   </style>
 </head>
-
 <body>
   <!-- Download Resume Button -->
   <div class="download-btn">
@@ -357,9 +349,9 @@
       <h2>About Me</h2>
       <img src="images/me.jpg" alt="My Image" class="my-image">
       <p>
-        I'm a junior studying Mechanical Engineering at the University of Minnesota. I’m passionate about 
-        cars and work with the FSAE team to design and improve vehicle systems. Outside of engineering, 
-        I love working out and staying active. I’m excited to learn more about automotive design 
+        I'm a junior studying Mechanical Engineering at the University of Minnesota. I’m passionate about
+        cars and work with the FSAE team to design and improve vehicle systems. Outside of engineering,
+        I love working out and staying active. I’m excited to learn more about automotive design
         and energy systems, and I aim to contribute to exciting projects in the future.
       </p>
     </div>
@@ -376,13 +368,9 @@
       </div>
       <div class="split-text">
         <h3>Formula SAE</h3>
-        <p>
-          Quick overview: EV race car suspension design, stress testing, 
-          FEA for critical components, etc.
-        </p>
-        <!-- "Learn More" -> opens a new detail page -->
+        <p>Quick overview: EV race car suspension design, stress testing, etc.</p>
         <button class="learn-more-button">
-          <a href="1st.html" target="_blank">Learn More</a>
+          <a href="1st.html">Learn More</a>
         </button>
       </div>
     </div>
@@ -393,14 +381,10 @@
         <img src="images/fsae2.jpg" alt="Experience 2">
       </div>
       <div class="split-text">
-        <h3>Phillips and Temro Industries</h3>
-        <p>
-          Performed lab testing on connectors, designed vibration fixtures, 
-          validated solutions with ANSYS, etc.
-        </p>
-        <!-- Another new detail page -->
+        <h3>Phillips and Temro</h3>
+        <p>Performed lab testing on connectors, designed vibration fixtures, validated solutions, etc.</p>
         <button class="learn-more-button">
-          <a href="2nd.html" target="_blank">Learn More</a>
+          <a href="2nd.html">Learn More</a>
         </button>
       </div>
     </div>
@@ -409,7 +393,6 @@
   <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
-
     <!-- Maze Navigating Robot -->
     <div class="split-section">
       <div class="split-image">
@@ -421,9 +404,8 @@
           Integrated DC motors, a servo, and an ultrasonic sensor to build
           a robot that navigates mazes autonomously.
         </p>
-        <!-- Another detail page for the Robot project -->
         <button class="learn-more-button">
-          <a href="3rd.html" target="_blank">Learn More</a>
+          <a href="3rd.html">Learn More</a>
         </button>
       </div>
     </div>
@@ -434,12 +416,11 @@
     <div class="contact-container">
       <h2>Contact Me</h2>
       <p>
-        If you’d like to get in touch, whether it’s for collaborations, questions, 
+        If you’d like to get in touch, whether it’s for collaborations, questions,
         or just to say hi, I’d love to hear from you!
       </p>
-
-      <form action="https://formsubmit.co/ianseremetwebsite@gmail.com" 
-            method="POST" 
+      <form action="https://formsubmit.co/ianseremetwebsite@gmail.com"
+            method="POST"
             class="contact-form">
         <div class="form-group">
           <input type="text" name="name" placeholder="Your Name" required />
@@ -455,18 +436,44 @@
     </div>
   </section>
 
-  <!-- Footer Section -->
-  <footer id="footer">
-    <a href="https://www.linkedin.com/in/ian-seremet-5b1471248/" target="_blank" class="social-icon">
-      <i class="fab fa-linkedin"></i>
+  
+ <!-- Footer (Offset just like the sections) -->
+<footer id="footer" style="background-color: #2a3d45; padding: 20px; text-align: center; color: #fff;">
+    <!-- Inline paragraph so text sits on the same line as the icon -->
+    <p 
+      style="
+        margin-bottom: 10px; 
+        display: inline;
+      "
+    >
+      My LinkedIn:
+    </p>
+  
+    <!-- Anchor also inline, with a small left margin -->
+    <a 
+      href="https://www.linkedin.com/in/zakaria-sakkal/" 
+      target="_blank" 
+      style="
+        text-decoration: none;
+        display: inline;
+        margin-left: 8px;
+      "
+    >
+      <!-- Larger square image at 32x32 -->
+      <img 
+        src="images/footer.jpg" 
+        alt="footer" 
+        style="width: 32px; height: 32px; vertical-align: middle;"
+      >
     </a>
   </footer>
-
+  
+  
+  
   <!-- Slideshow Script -->
   <script>
     let slideIndex = 0;
     showSlides();
-
     function showSlides() {
       let slides = document.getElementsByClassName("mySlides");
       for (let i = 0; i < slides.length; i++) {
@@ -476,11 +483,9 @@
       if (slideIndex > slides.length) {
         slideIndex = 1;
       }
-      // Show the current slide
       if (slides[slideIndex - 1]) {
         slides[slideIndex - 1].style.display = "block";
       }
-      // Change slide every 4 seconds
       setTimeout(showSlides, 4000);
     }
   </script>
