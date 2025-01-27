@@ -22,7 +22,6 @@
 
     /* ---------- BODY / DEFAULT STYLES ---------- */
     body {
-      /* Removed display: flex here, so footer is in normal flow */
       font-family: 'Space Mono', monospace;
       background-color: #333;
       color: #fff;
@@ -90,8 +89,8 @@
     /* ---------- SECTION LAYOUT ---------- */
     section {
       padding: 60px 20px;
-      margin-left: 220px;             /* offset for fixed nav width */
-      width: calc(100% - 220px);      /* so no horizontal scroll */
+      margin-left: 220px;       /* offset for fixed nav width */
+      width: calc(100% - 220px);/* so no horizontal scroll */
     }
 
     h1, h2, h3 {
@@ -198,6 +197,7 @@
     .learn-more-button a {
       color: #fff;
       text-decoration: none;
+      /* Notice: We do NOT use target="_blank" => same tab */
     }
     .learn-more-button:hover {
       background-color: #004d40;
@@ -215,16 +215,13 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       text-align: center;
     }
-
-    /* Increased max-width for bigger input boxes in the Contact form */
     .contact-form {
       display: flex;
       flex-direction: column;
       gap: 15px;
       margin: 0 auto;
-      max-width: 600px; /* bigger boxes */
+      max-width: 600px;
     }
-
     .contact-form .form-group {
       display: flex;
       flex-direction: column;
@@ -260,14 +257,14 @@
       background-color: #004d40;
     }
 
-    /* ---------- FOOTER (Same offset as section) ---------- */
+    /* ---------- FOOTER ---------- */
     footer {
       background-color: #2a3d45;
       padding: 20px;
       color: #fff;
       text-align: center;
-      margin-left: 220px;             /* offset to not be behind nav */
-      width: calc(100% - 220px);      /* same as sections */
+      margin-left: 220px;             
+      width: calc(100% - 220px);
     }
     .social-icon {
       margin: 0 10px;
@@ -370,6 +367,7 @@
       <div class="split-text">
         <h3>Formula SAE</h3>
         <p>Quick overview: EV race car suspension design, stress testing, etc.</p>
+        <!-- NO target="_blank" so same tab -->
         <button class="learn-more-button">
           <a href="1st.html">Learn More</a>
         </button>
@@ -384,6 +382,7 @@
       <div class="split-text">
         <h3>Phillips and Temro</h3>
         <p>Performed lab testing on connectors, designed vibration fixtures, validated solutions, etc.</p>
+        <!-- NO target="_blank" so same tab -->
         <button class="learn-more-button">
           <a href="2nd.html">Learn More</a>
         </button>
@@ -405,6 +404,7 @@
           Integrated DC motors, a servo, and an ultrasonic sensor to build
           a robot that navigates mazes autonomously.
         </p>
+        <!-- NO target="_blank" so same tab -->
         <button class="learn-more-button">
           <a href="3rd.html">Learn More</a>
         </button>
@@ -420,7 +420,6 @@
         If you’d like to get in touch, whether it’s for collaborations, questions,
         or just to say hi, I’d love to hear from you!
       </p>
-      <!-- Changed .contact-form to bigger width -->
       <form 
         action="https://formsubmit.co/sakka008@umn.edu" 
         method="POST" 
@@ -440,7 +439,7 @@
     </div>
   </section>
 
-  <!-- Footer (Offset just like the sections) -->
+  <!-- Footer -->
   <footer
     style="
       background-color: #2a3d45;
@@ -451,18 +450,14 @@
       width: calc(100% - 220px);
     "
   >
-    <!-- Inline paragraph so text sits on the same line as the icon -->
     <p style="margin-bottom: 10px; display: inline;">
       My LinkedIn:
     </p>
-
-    <!-- Anchor also inline, with a small left margin -->
     <a
       href="https://www.linkedin.com/in/zakaria-sakkal/"
       target="_blank"
       style="text-decoration: none; display: inline; margin-left: 8px;"
     >
-      <!-- Larger square image at 32x32 -->
       <img
         src="images/footer.jpg"
         alt="footer"
@@ -475,6 +470,7 @@
   <script>
     let slideIndex = 0;
     showSlides();
+
     function showSlides() {
       let slides = document.getElementsByClassName("mySlides");
       for (let i = 0; i < slides.length; i++) {
