@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>My Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-yH8ec7F9tHNkf2prU7uVdnx1xI5VUpkSJiKa4D6B/TB/H0gYd6V1VfKfF9fJkHA2hIlgG5e4GVM5Ea3sv8IYew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ---------- GLOBAL / RESET ---------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /* Hide any accidental horizontal overflow */
+    html, body {
+      overflow-x: hidden;
+    }
+
+    /* ---------- BODY / DEFAULT STYLES ---------- */
+    body {
+      font-family: 'Roboto Slab', serif;
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+      font-size: 18px;
+      line-height: 1.6;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* ---------- DOWNLOAD RESUME BUTTON ---------- */
+    .download-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #ff9800;
+      padding: 12px 24px;
+      border-radius: 30px;
+      z-index: 10;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .download-btn a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .download-btn:hover {
+      background-color: #e68900;
+      transform: scale(1.05);
+    }
+
+    /* ---------- NAVIGATION (Fixed) ---------- */
+    nav {
+      background-color: #2a3d45;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100%;
+      padding-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+      transition: width 0.3s;
+    }
+    nav ul {
+      list-style-type: none;
+      width: 100%;
+    }
+    nav li {
+      margin: 15px 0;
+      width: 100%;
+    }
+    nav a {
+      color: #e0e0e0;
+      font-size: 18px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #004d40;
+      color: #ffffff;
+    }
+
+    /* ---------- SECTION LAYOUT ---------- */
+    section {
+      padding: 80px 20px;
+      margin-left: 220px;       /* offset for fixed nav width */
+      width: calc(100% - 220px);/* so no horizontal scroll */
+      transition: margin-left 0.3s, width 0.3s;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 20px;
+      color: #ff9800;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    /* ---------- SLIDESHOW ---------- */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      margin-bottom: 40px;
+      background-color: #1e1e1e;
+    }
+    .mySlides {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      animation: fade 1.5s;
+    }
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      padding: 0 30px;
+    }
+    .overlay-text h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+    .no-wrap {
+      white-space: nowrap;
+      display: block;
+      margin-bottom: 1em;
+      font-size: 1.2em;
+    }
+
+    /* ---------- ABOUT ME ---------- */
+    #about-me .about-me-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .my-image {
+      max-width: 450px; /* Increased from 300px to 450px (50% larger) */
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      border: 5px solid #ff9800;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s; /* Smooth transition for hover effect */
+    }
+    .my-image:hover {
+      transform: scale(1.05); /* Slight zoom on hover */
+    }
+
+    /* ---------- SPLIT SECTION ---------- */
+    .split-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #2a3d45;
+      border-radius: 15px;
+      margin: 30px auto;
+      width: 90%;
+      max-width: 1200px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .split-section:hover {
+      transform: translateY(-5px);
+    }
+    .split-image {
+      flex: 1;
+      margin: 10px;
+    }
+    .split-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .split-text {
+      flex: 1;
+      margin: 10px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    .split-text h3 {
+      margin: 0 0 10px;
+      font-size: 1.8em;
+      color: #ff9800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .split-text p {
+      margin-bottom: 20px;
+      font-size: 1em;
+      line-height: 1.8;
+    }
+    .learn-more-button {
+      background-color: #ff9800;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .learn-more-button:hover {
+      background-color: #e68900;
+      transform: scale(1.05);
+    }
+
+    /* ---------- CONTACT SECTION ---------- */
+    .contact-container {
+      margin: 40px auto;
+      width: 90%;
+      max-width: 800px;
+      border: 2px solid #888;
+      border-radius: 15px;
+      padding: 40px;
+      background-color: #2a3d45;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .contact-container h2 {
+      color: #ff9800;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
+    .contact-container p {
+      margin-bottom: 30px;
+      font-size: 1.1em;
+      color: #ccc;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    .contact-form .form-group {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .contact-form label {
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #ff9800;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px;
+      font-size: 1em;
+      border: 2px solid #555;
+      border-radius: 8px;
+      background-color: #fff;
+      color: #333;
+      transition: border-color 0.3s;
+    }
+    .contact-form input[type="text"]:focus,
+    .contact-form input[type="email"]:focus,
+    .contact-form textarea:focus {
+      border-color: #ff9800;
+      outline: none;
+    }
+    .submit-btn {
+      background-color: #ff9800;
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      align-self: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .submit-btn:hover {
+      background-color: #e68900;
+      transform: scale(1.05);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background-color: #2a3d45;
+      padding: 20px;
+      color: #e0e0e0;
+      text-align: center;
+      margin-left: 220px;            
+      width: calc(100% - 220px);
+      position: relative;
+      bottom: 0;
+    }
+    .social-icon {
+      margin: 0 10px;
+      color: #ff9800;
+      text-decoration: none;
+      font-size: 1.8em;
+      transition: color 0.3s;
+    }
+    .social-icon:hover {
+      color: #e68900;
+    }
+
+    /* ---------- RESPONSIVE MEDIA QUERIES ---------- */
+    @media (max-width: 992px) {
+      nav {
+        width: 180px;
+      }
+      section {
+        margin-left: 180px;
+        width: calc(100% - 180px);
+      }
+      footer {
+        margin-left: 180px;
+        width: calc(100% - 180px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        width: 160px;
+      }
+      section {
+        margin-left: 160px;
+        width: calc(100% - 160px);
+      }
+      footer {
+        margin-left: 160px;
+        width: calc(100% - 160px);
+      }
+      .overlay-text h1 {
+        font-size: 2em;
+      }
+      .split-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .split-image,
+      .split-text {
+        width: 100%;
+        margin: 10px 0;
+      }
+      .contact-container {
+        width: 95%;
+        margin: 20px auto;
+      }
+      /* Adjust the profile image size on smaller screens */
+      .my-image {
+        max-width: 350px; /* Slightly reduce size for smaller screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        width: 140px;
+      }
+      section {
+        margin-left: 140px;
+        width: calc(100% - 140px);
+      }
+      footer {
+        margin-left: 140px;
+        width: calc(100% - 140px);
+      }
+      .overlay-text h1 {
+        font-size: 1.5em;
+      }
+      h1, h2, h3 {
+        font-size: 1.2em;
+      }
+      /* Further adjust the profile image size on very small screens */
+      .my-image {
+        max-width: 250px; /* Further reduce size for very small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Download Resume Button -->
+  <div class="download-btn">
+    <a href="Zakaria_Resume.pdf" download><i class="fas fa-download"></i> Download Resume</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#introduction"><i class="fas fa-home"></i> Introduction</a></li>
+      <li><a href="#about-me"><i class="fas fa-user"></i> About Me</a></li>
+      <li><a href="#experiences"><i class="fas fa-briefcase"></i> Experiences</a></li>
+      <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Introduction / Slideshow -->
+  <section id="introduction">
+    <div class="slideshow-container">
+      <div class="mySlides" style="background-image: url('images/engineering-image-1.jpg');"></div>
+      <div class="mySlides" style="background-image: url('images/engineering-image-2.jpg');"></div>
+      <div class="mySlides" style="background-image: url('images/engineering-image-3.jpg');"></div>
+      <div class="overlay-text">
+        <h1>Hello there, I'm Zak!</h1>
+        <p class="no-wrap">I’ve always been fascinated by how things work and how they can be improved.</p>
+        <p class="no-wrap">In this space, I share projects that blend my curiosity and hands-on experience.</p>
+        <p class="no-wrap">Each project reflects my passion for solving problems and experimenting with new ideas.</p>
+        <p class="no-wrap">Have a look around and I hope you find something interesting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about-me">
+    <div class="about-me-content">
+      <img src="images/me.jpg" alt="Photo of Zakaria Sakkal" class="my-image">
+      <div>
+        <h2>About Me</h2>
+        <p>
+          I'm a junior studying Mechanical Engineering at the University of Minnesota. I’m passionate about
+          cars and work with the FSAE team to design and improve vehicle systems. Outside of engineering,
+          I love working out and staying active. I’m excited to learn more about automotive design
+          and energy systems, and I aim to contribute to exciting projects in the future.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiences Section -->
+  <section id="experiences">
+    <h2>Experiences</h2>
+
+    <!-- Experience #1 -->
+    <div class="split-section">
+      <div class="split-image">
+        <img src="images/fsae1.jpg" alt="Formula SAE Experience">
+      </div>
+      <div class="split-text">
+        <h3><i class="fas fa-car"></i> Formula SAE</h3>
+        <p>Quick overview: EV race car suspension design, stress testing, etc.</p>
+        <a href="1st.html" class="learn-more-button"><i class="fas fa-arrow-right"></i> Learn More</a>
+      </div>
+    </div>
+
+    <!-- Experience #2 -->
+    <div class="split-section">
+      <div class="split-image">
+        <img src="images/phillips-temro3.jpg" alt="Phillips and Temro Experience">
+      </div>
+      <div class="split-text">
+        <h3><i class="fas fa-tools"></i> Phillips and Temro</h3>
+        <p>Performed lab testing on connectors, designed vibration fixtures, validated solutions, etc.</p>
+        <a href="2nd.html" class="learn-more-button"><i class="fas fa-arrow-right"></i> Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <!-- Maze Navigating Robot -->
+    <div class="split-section">
+      <div class="split-image">
+        <img src="images/robot1.png" alt="Maze Navigating Robot">
+      </div>
+      <div class="split-text">
+        <h3><i class="fas fa-robot"></i> Maze Navigating Robot</h3>
+        <p>
+          Integrated DC motors, a servo, and an ultrasonic sensor to build
+          a robot that navigates mazes autonomously.
+        </p>
+        <a href="3rd.html" class="learn-more-button"><i class="fas fa-arrow-right"></i> Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-container">
+      <h2>Contact Me</h2>
+      <p>
+        If you’re open to exploring future opportunities or simply have questions about my work,
+        feel free to reach out. I'd be happy to chat!
+      </p>
+      <form
+        action="https://formsubmit.co/sakka008@umn.edu"
+        method="POST"
+        class="contact-form"
+      >
+        <!-- Redirect to Thank You page after submission -->
+        <input type="hidden" name="_next" value="thank-you.html">
+
+        <!-- Disable CAPTCHA (optional) -->
+        <input type="hidden" name="_captcha" value="false">
+
+        <!-- Honeypot field to prevent spam (optional) -->
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>My LinkedIn:</p>
+      <a href="https://www.linkedin.com/in/zakaria-sakkal/" target="_blank">
+        <img src="images/footer.jpg" alt="LinkedIn Icon">
+      </a>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button (Optional) -->
+  <div class="back-to-top" id="backToTop" aria-label="Back to Top" tabindex="0" style="display: none;">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Slideshow Script -->
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("mySlides");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1; }
+      if (slides[slideIndex - 1]) {
+        slides[slideIndex - 1].style.display = "block";
+      }
+      setTimeout(showSlides, 5000); // Change slide every 5 seconds
+    }
+
+    // Back to Top Button Functionality
+    const backToTopButton = document.getElementById('backToTop');
+    window.onscroll = function() { scrollFunction(); };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopButton.style.display = "flex";
+      } else {
+        backToTopButton.style.display = "none";
+      }
+    }
+
+    backToTopButton.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Back Button Functionality using History API
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

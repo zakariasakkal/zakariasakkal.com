@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phillips and Temro - Detailed View</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-yH8ec7F9tHNkf2prU7uVdnx1xI5VUpkSJiKa4D6B/TB/H0gYd6V1VfKfF9fJkHA2hIlgG5e4GVM5Ea3sv8IYew=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Custom CSS -->
+  <style>
+    /* ---------- VARIABLES ---------- */
+    :root {
+      --primary-color: #ff9800; /* Orange Accent */
+      --background-color: #1e1e1e; /* Dark Background */
+      --text-color: #e0e0e0; /* Light Text */
+      --secondary-color: #2a3d45; /* Secondary Background */
+      --button-color: #ff9800; /* Button Background */
+      --button-hover-color: #e68900; /* Button Hover Background */
+      --link-color: #ff9800; /* Link Color */
+      --link-hover-color: #e68900; /* Link Hover Color */
+      --font-heading: 'Roboto Mono', monospace; /* Heading Font */
+      --font-body: 'Roboto Slab', serif; /* Body Font */
+      --transition-speed: 0.3s;
+      --shadow-color: rgba(0, 0, 0, 0.3);
+      --bluish-line-color: #ADD8E6; /* Light Blue for Bottom Line */
+    }
+
+    /* ---------- GLOBAL RESET ---------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Hide any accidental horizontal overflow */
+    html, body {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* ---------- BODY / DEFAULT STYLES ---------- */
+    body {
+      font-family: var(--font-body);
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 20px;
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ---------- DOWNLOAD RESUME BUTTON ---------- */
+    .download-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--button-color);
+      padding: 12px 24px;
+      border-radius: 30px;
+      z-index: 1001;
+      text-align: center;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: transform var(--transition-speed), background-color var(--transition-speed);
+    }
+    .download-btn a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .download-btn:hover {
+      background-color: var(--button-hover-color);
+      transform: scale(1.05);
+    }
+
+    /* ---------- BACK BUTTON ---------- */
+    .back-button {
+      position: fixed; /* Fixed positioning */
+      top: 20px;        /* Align with Download Resume Button */
+      left: 20px;       /* Position at top left */
+      background-color: var(--button-color);
+      padding: 12px 24px;
+      border-radius: 30px;
+      z-index: 1001;
+      text-align: center;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: transform var(--transition-speed), background-color var(--transition-speed);
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .back-button:hover {
+      background-color: var(--button-hover-color);
+      transform: scale(1.05);
+    }
+
+    /* ---------- SECTION LAYOUT ---------- */
+    section {
+      padding: 80px 20px;
+      width: 100%; /* Occupy full width */
+      transition: width var(--transition-speed);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      font-family: var(--font-heading);
+      text-align: center;
+    }
+
+    /* ---------- CONTENT STYLES ---------- */
+    .content {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .role {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 40px;
+      background-color: var(--secondary-color);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: transform var(--transition-speed);
+      width: 100%;
+      justify-content: center;
+    }
+    .role:hover {
+      transform: translateY(-5px);
+    }
+    .role img {
+      width: 200px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: transform var(--transition-speed);
+    }
+    .role img:hover {
+      transform: scale(1.05);
+    }
+    .role-details {
+      flex: 1;
+    }
+    .role-details h2 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    .role-details h3 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      color: var(--link-color);
+      display: flex;
+      align-items: center;
+    }
+    .role-details h3 i {
+      margin-right: 8px;
+    }
+    .role-details p, .role-details ul {
+      font-size: 1em;
+      line-height: 1.8;
+      color: var(--text-color);
+    }
+    .role-details ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+
+    /* ---------- CONTACT FORM STYLES ---------- */
+    .contact-container {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 1200px;
+      border: 2px solid #888;
+      border-radius: 10px;
+      padding: 30px;
+      background-color: var(--secondary-color);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 0 auto;
+      max-width: 600px; /* Bigger input boxes */
+    }
+    .contact-form .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #333;
+      resize: vertical;
+    }
+    .contact-form textarea {
+      min-height: 120px;
+    }
+    .submit-btn {
+      background-color: var(--button-color);
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: fit-content;
+      margin: 0 auto;
+    }
+    .submit-btn:hover {
+      background-color: var(--button-hover-color);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background-color: var(--secondary-color);
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      position: relative;
+      bottom: 0;
+      transition: width var(--transition-speed);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+      border-top: 2px solid var(--bluish-line-color); /* Bluish Line */
+    }
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-content p {
+      margin: 0;
+      font-size: 1em;
+    }
+    .footer-content a img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%; /* Makes the image circular if it's square */
+      vertical-align: middle;
+      transition: transform var(--transition-speed);
+    }
+    .footer-content a img:hover {
+      transform: scale(1.1);
+    }
+
+    /* ---------- BACK TO TOP BUTTON ---------- */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background-color: var(--primary-color);
+      color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: background-color var(--transition-speed), transform var(--transition-speed);
+      z-index: 1000;
+    }
+    .back-to-top:hover {
+      background-color: var(--button-hover-color);
+      transform: scale(1.1);
+    }
+
+    /* ---------- RESPONSIVE MEDIA QUERIES ---------- */
+    @media (max-width: 1200px) {
+      .role img {
+        width: 150px;
+      }
+      .back-button {
+        left: 180px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .back-button {
+        left: 20px;
+      }
+      section {
+        width: 100%;
+        padding: 80px 10px;
+      }
+      .content {
+        text-align: center;
+      }
+      .role {
+        flex-direction: column;
+        align-items: center;
+      }
+      .role img {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1, h2, h3 {
+        font-size: 1.2em;
+      }
+      .role img {
+        max-width: 100%;
+      }
+      .back-button {
+        left: 140px;
+      }
+    }
+
+    /* ---------- HAMBURGER MENU ICON ROTATION ---------- */
+    @media (max-width: 768px) {
+      .hamburger.active i {
+        transform: rotate(90deg);
+        transition: transform 0.3s;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hamburger Menu for Mobile (Hidden on Desktop) -->
+  <div class="hamburger" id="hamburger" aria-label="Toggle Navigation" tabindex="0">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Download Resume Button -->
+  <div class="download-btn">
+    <a href="Zakaria_Resume.pdf" download><i class="fas fa-download"></i> Download Resume</a>
+  </div>
+
+  <!-- Back Button Fixed at Top Left -->
+  <button class="back-button" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back</button>
+
+  <!-- Detailed View Section -->
+  <section id="phillips-temro">
+    <div class="content">
+
+      <!-- Phillips and Temro - Detailed Overview -->
+      <div class="role">
+        <img src="images/fsae2.jpg" alt="Phillips and Temro Work Example" loading="lazy">
+        <div class="role-details">
+          <h2>Phillips and Temro - Detailed Overview</h2>
+          <h3><i class="fas fa-laboratory"></i> Lab Testing and Design Engineer</h3>
+          <h4>Jan 2023 - Present</h4>
+          <ul>
+            <li>Conducted comprehensive lab testing on connectors to ensure reliability and performance under various conditions.</li>
+            <li>Designed vibration fixtures to simulate real-world stress, enhancing product durability.</li>
+            <li>Verified design integrity and performance using ANSYS simulations, leading to a 15% improvement in efficiency.</li>
+            <li>Collaborated with cross-functional teams to streamline the testing process, reducing testing time by 20%.</li>
+            <li>Implemented quality control measures that decreased defect rates by 10% over six months.</li>
+          </ul>
+          <img src="images/fsae2_detail.jpg" alt="Detailed Work Example" loading="lazy">
+          <p>
+            In my role at Phillips and Temro, I have been instrumental in enhancing the quality and reliability of our connectors through rigorous testing and innovative design solutions. My efforts in designing and implementing advanced vibration fixtures have significantly improved our product's performance, ensuring they meet industry standards and exceed customer expectations.
+          </p>
+          <p>
+            Additionally, by leveraging ANSYS for simulation-based verification, I have been able to identify and rectify potential design flaws early in the development process. This proactive approach has not only optimized our design processes but also contributed to substantial cost savings and efficiency gains within the engineering department.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>My LinkedIn:</p>
+      <a href="https://www.linkedin.com/in/zakaria-sakkal/" target="_blank">
+        <img src="images/footer.jpg" alt="LinkedIn Icon">
+      </a>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop" aria-label="Back to Top" tabindex="0">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Custom Scripts -->
+  <script>
+    // Hamburger Menu Functionality
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked (if navigation exists)
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+
+    // Back to Top Button Functionality
+    const backToTopButton = document.getElementById('backToTop');
+    window.onscroll = function() { scrollFunction(); };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopButton.style.display = "flex";
+      } else {
+        backToTopButton.style.display = "none";
+      }
+    }
+
+    backToTopButton.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Back Button Functionality using History API
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>
