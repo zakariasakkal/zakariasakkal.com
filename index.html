@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -323,16 +323,51 @@
     }
 
     /* ---------- FOOTER ---------- */
-    footer {
-      background-color: #2a3d45;
-      padding: 20px;
-      color: #e0e0e0;
-      text-align: center;
-      margin-left: 220px;            
-      width: calc(100% - 220px);
-      position: relative;
-      bottom: 0;
-    }
+    /* ---------- FOOTER ---------- */
+footer {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  color: #e0e0e0;
+  text-align: center;
+  margin-left: 220px;            
+  width: calc(100% - 220px);
+  position: relative;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+  border-top: 2px solid var(--bluish-line-color); /* Bluish Line */
+  transition: margin-left var(--transition-speed), width var(--transition-speed);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;          /* Vertically centers items */
+  justify-content: center;      /* Horizontally centers items */
+  gap: 10px;
+  flex-wrap: nowrap;            /* Prevents wrapping to the next line */
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.2;             /* Ensures text height is consistent */
+}
+
+.footer-content a img {
+  width: 24px;                  /* Reduced size from 32px to 24px */
+  height: 24px;                 /* Reduced size from 32px to 24px */
+  border-radius: 50%;           /* Makes the image circular if it's square */
+  transition: transform var(--transition-speed);
+  /* Remove vertical-align as Flexbox handles alignment */
+}
+
+.footer-content a img:hover {
+  transform: scale(1.1);        /* Slight zoom on hover */
+}
+
+
     .social-icon {
       margin: 0 10px;
       color: #ff9800;

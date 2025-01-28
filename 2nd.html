@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Phillips and Temro - Detailed View</title>
+  <title>Formula SAE - Detailed Experience</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
@@ -112,8 +112,9 @@
     /* ---------- SECTION LAYOUT ---------- */
     section {
       padding: 80px 20px;
+      /* Removed margin-left and width adjustments since nav is removed */
       width: 100%; /* Occupy full width */
-      transition: width var(--transition-speed);
+      transition: margin-left var(--transition-speed), width var(--transition-speed);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -135,6 +136,7 @@
       text-align: left;
     }
 
+    /* ---------- ROLE STYLES ---------- */
     .role {
       display: flex;
       align-items: flex-start;
@@ -212,6 +214,11 @@
       display: flex;
       flex-direction: column;
     }
+    .contact-form label {
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
     .contact-form input[type="text"],
     .contact-form input[type="email"],
     .contact-form textarea {
@@ -247,7 +254,7 @@
     footer {
       background-color: var(--secondary-color);
       padding: 20px;
-      color: #fff;
+      color: #e0e0e0;
       text-align: center;
       width: 100%;
       position: relative;
@@ -264,21 +271,22 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* Prevent wrapping */
     }
     .footer-content p {
       margin: 0;
       font-size: 1em;
+      line-height: 1.2; /* Consistent line height */
     }
     .footer-content a img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%; /* Makes the image circular if it's square */
-      vertical-align: middle;
+      width: 32px;                  /* Set to 32px to match second code */
+      height: 32px;                 /* Set to 32px to match second code */
+      border-radius: 50%;           /* Makes the image circular if it's square */
       transition: transform var(--transition-speed);
+      /* Removed vertical-align as Flexbox handles alignment */
     }
     .footer-content a img:hover {
-      transform: scale(1.1);
+      transform: scale(1.1);        /* Slight zoom on hover */
     }
 
     /* ---------- BACK TO TOP BUTTON ---------- */
@@ -372,31 +380,36 @@
   <!-- Back Button Fixed at Top Left -->
   <button class="back-button" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back</button>
 
-  <!-- Detailed View Section -->
-  <section id="phillips-temro">
+  <!-- Detailed Experience Section -->
+  <section id="detailed-experience">
     <div class="content">
 
-      <!-- Phillips and Temro - Detailed Overview -->
+      <!-- UMN Formula SAE Team - Outboard Suspension Lead -->
       <div class="role">
-        <img src="images/fsae2.jpg" alt="Phillips and Temro Work Example" loading="lazy">
+        <img src="images/outboard_suspension_lead.jpg" alt="Outboard Suspension Lead" loading="lazy">
         <div class="role-details">
-          <h2>Phillips and Temro - Detailed Overview</h2>
-          <h3><i class="fas fa-laboratory"></i> Lab Testing and Design Engineer</h3>
-          <h4>Jan 2023 - Present</h4>
+          <h2>UMN Formula SAE Team</h2>
+          <h3><i class="fas fa-tools"></i> Outboard Suspension Lead</h3>
+          <h4>Sept 2022 - Present</h4>
           <ul>
-            <li>Conducted comprehensive lab testing on connectors to ensure reliability and performance under various conditions.</li>
-            <li>Designed vibration fixtures to simulate real-world stress, enhancing product durability.</li>
-            <li>Verified design integrity and performance using ANSYS simulations, leading to a 15% improvement in efficiency.</li>
-            <li>Collaborated with cross-functional teams to streamline the testing process, reducing testing time by 20%.</li>
-            <li>Implemented quality control measures that decreased defect rates by 10% over six months.</li>
+            <li>Optimized suspension system design by integrating load cell data into Ansys simulations, achieving a 19% mass reduction while maintaining reliable safety factors.</li>
+            <li>Conducted load cell testing to calculate forces through all suspension links and determine maximum loads under worst-case scenarios.</li>
+            <li>Enhanced suspension tunability with Ackermann and camber brackets for precise Ackermann, camber, and mechanical trail adjustments, optimizing handling performance.</li>
           </ul>
-          <img src="images/fsae2_detail.jpg" alt="Detailed Work Example" loading="lazy">
-          <p>
-            In my role at Phillips and Temro, I have been instrumental in enhancing the quality and reliability of our connectors through rigorous testing and innovative design solutions. My efforts in designing and implementing advanced vibration fixtures have significantly improved our product's performance, ensuring they meet industry standards and exceed customer expectations.
-          </p>
-          <p>
-            Additionally, by leveraging ANSYS for simulation-based verification, I have been able to identify and rectify potential design flaws early in the development process. This proactive approach has not only optimized our design processes but also contributed to substantial cost savings and efficiency gains within the engineering department.
-          </p>
+        </div>
+      </div>
+
+      <!-- UMN Formula SAE Team - Powertrain Team Member -->
+      <div class="role">
+        <img src="images/powertrain_team_member.jpg" alt="Powertrain Team Member" loading="lazy">
+        <div class="role-details">
+          <h2>UMN Formula SAE Team</h2>
+          <h3><i class="fas fa-car"></i> Powertrain Team Member</h3>
+          <h4>Sept 2022 - Present</h4>
+          <ul>
+            <li>Performed comprehensive heat management, including pressure drop calculations, mass flow calculations, pump selection, and sizing radiators based on dynamometer testing.</li>
+            <li>Used SolidWorks to create 3D models and engineering drawings for FSAE race car components.</li>
+          </ul>
         </div>
       </div>
 
@@ -407,7 +420,7 @@
   <footer>
     <div class="footer-content">
       <p>My LinkedIn:</p>
-      <a href="https://www.linkedin.com/in/zakaria-sakkal/" target="_blank">
+      <a href="https://www.linkedin.com/in/zakaria-sakkal/" target="_blank" aria-label="Zakaria Sakkal's LinkedIn Profile">
         <img src="images/footer.jpg" alt="LinkedIn Icon">
       </a>
     </div>
@@ -425,7 +438,9 @@
     const navMenu = document.getElementById('nav-menu');
 
     hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+      if (navMenu) {
+        navMenu.classList.toggle('active');
+      }
       hamburger.classList.toggle('active');
     });
 

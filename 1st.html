@@ -28,6 +28,7 @@
       --font-body: 'Roboto Slab', serif; /* Body Font */
       --transition-speed: 0.3s;
       --shadow-color: rgba(0, 0, 0, 0.3);
+      --bluish-line-color: #ADD8E6; /* Light Blue for Bottom Line */
     }
 
     /* ---------- GLOBAL RESET ---------- */
@@ -135,6 +136,7 @@
       text-align: left;
     }
 
+    /* ---------- ROLE STYLES ---------- */
     .role {
       display: flex;
       align-items: flex-start;
@@ -212,6 +214,11 @@
       display: flex;
       flex-direction: column;
     }
+    .contact-form label {
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
     .contact-form input[type="text"],
     .contact-form input[type="email"],
     .contact-form textarea {
@@ -257,21 +264,29 @@
       flex-direction: column;
       align-items: center;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+      border-top: 2px solid var(--bluish-line-color); /* Bluish Line */
     }
-    footer p {
-      margin-bottom: 10px;
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: nowrap; /* Prevent wrapping */
+    }
+    .footer-content p {
+      margin: 0;
       font-size: 1em;
-      color: #ccc;
+      line-height: 1.2; /* Consistent line height */
     }
-    .social-icon {
-      margin: 0 10px;
-      color: var(--primary-color);
-      text-decoration: none;
-      font-size: 1.8em;
-      transition: color var(--transition-speed);
+    .footer-content a img {
+      width: 32px;                  /* Set to 32px to match second code */
+      height: 32px;                 /* Set to 32px to match second code */
+      border-radius: 50%;           /* Makes the image circular if it's square */
+      transition: transform var(--transition-speed);
+      /* Removed vertical-align as Flexbox handles alignment */
     }
-    .social-icon:hover {
-      color: var(--button-hover-color);
+    .footer-content a img:hover {
+      transform: scale(1.1);        /* Slight zoom on hover */
     }
 
     /* ---------- BACK TO TOP BUTTON ---------- */
@@ -402,32 +417,14 @@
   </section>
 
   <!-- Footer -->
-  <footer
-    style="
-      background-color: #2a3d45;
-      padding: 20px;
-      color: #fff;
-      text-align: center;
-      margin-left: 220px;
-      width: calc(100% - 220px);
-    "
-  >
-    <p style="margin-bottom: 10px; display: inline;">
-      My LinkedIn:
-    </p>
-    <a
-      href="https://www.linkedin.com/in/zakaria-sakkal/"
-      target="_blank"
-      style="text-decoration: none; display: inline; margin-left: 8px;"
-    >
-      <img
-        src="images/footer.jpg"
-        alt="LinkedIn Icon"
-        style="width: 32px; height: 32px; vertical-align: middle;"
-      >
-    </a>
+  <footer>
+    <div class="footer-content">
+      <p>My LinkedIn:</p>
+      <a href="https://www.linkedin.com/in/zakaria-sakkal/" target="_blank" aria-label="Zakaria Sakkal's LinkedIn Profile">
+        <img src="images/footer.jpg" alt="LinkedIn Icon">
+      </a>
+    </div>
   </footer>
-
 
   <!-- Back to Top Button -->
   <div class="back-to-top" id="backToTop" aria-label="Back to Top" tabindex="0">
@@ -441,15 +438,17 @@
     const navMenu = document.getElementById('nav-menu');
 
     hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+      if (navMenu) {
+        navMenu.classList.toggle('active');
+      }
       hamburger.classList.toggle('active');
     });
 
-    // Close mobile menu when a link is clicked
+    // Close mobile menu when a link is clicked (if navigation exists)
     const navLinks = document.querySelectorAll('nav ul li a');
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (navMenu.classList.contains('active')) {
+        if (navMenu && navMenu.classList.contains('active')) {
           navMenu.classList.remove('active');
           hamburger.classList.remove('active');
         }
