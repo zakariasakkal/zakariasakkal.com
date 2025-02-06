@@ -191,6 +191,53 @@
       margin-left: 20px;
     }
 
+    /* ---------- IMAGE GALLERY ---------- */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .image-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      cursor: pointer;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.4);
+    }
+
+    /* ---------- LIGHTBOX ---------- */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1002;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
     /* ---------- CONTACT FORM STYLES ---------- */
     .contact-container {
       margin: 20px auto;
@@ -259,24 +306,24 @@
       width: 100%;
       position: relative;
       bottom: 0;
-      transition: width var(--transition-speed);
       display: flex;
       flex-direction: column;
       align-items: center;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
       border-top: 2px solid var(--bluish-line-color); /* Bluish Line */
+      transition: width var(--transition-speed);
     }
     .footer-content {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: center;          /* Vertically centers items */
+      justify-content: center;      /* Horizontally centers items */
       gap: 10px;
-      flex-wrap: nowrap; /* Prevent wrapping */
+      flex-wrap: nowrap;            /* Prevents wrapping to the next line */
     }
     .footer-content p {
       margin: 0;
       font-size: 1em;
-      line-height: 1.2; /* Consistent line height */
+      line-height: 1.2;             /* Ensures text height is consistent */
     }
     .footer-content a img {
       width: 32px;                  /* Set to 32px to match second code */
@@ -343,6 +390,9 @@
         width: 100%;
         max-width: 300px;
       }
+      .image-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
     }
 
     @media (max-width: 480px) {
@@ -390,12 +440,20 @@
         <div class="role-details">
           <h2>UMN Formula SAE Team</h2>
           <h3><i class="fas fa-tools"></i> Outboard Suspension Lead</h3>
-          <h4>Sept 2022 - Present</h4>
+          <h4>Sept 2024 - Present</h4>
           <ul>
             <li>Optimized suspension system design by integrating load cell data into Ansys simulations, achieving a 19% mass reduction while maintaining reliable safety factors.</li>
             <li>Conducted load cell testing to calculate forces through all suspension links and determine maximum loads under worst-case scenarios.</li>
             <li>Enhanced suspension tunability with Ackermann and camber brackets for precise Ackermann, camber, and mechanical trail adjustments, optimizing handling performance.</li>
           </ul>
+          
+          <!-- Image Gallery -->
+          <div class="image-gallery">
+            <img src="images/outboard1.jpg" alt="Outboard Suspension Design 1" loading="lazy">
+            <img src="images/outboard2.jpg" alt="Outboard Suspension Testing" loading="lazy">
+            <img src="images/outboard3.jpg" alt="Outboard Suspension Installation" loading="lazy">
+            <!-- Add more images as needed -->
+          </div>
         </div>
       </div>
 
@@ -410,6 +468,14 @@
             <li>Performed comprehensive heat management, including pressure drop calculations, mass flow calculations, pump selection, and sizing radiators based on dynamometer testing.</li>
             <li>Used SolidWorks to create 3D models and engineering drawings for FSAE race car components.</li>
           </ul>
+          
+          <!-- Image Gallery -->
+          <div class="image-gallery">
+            <img src="images/powertrain1.jpg" alt="Powertrain Component Design" loading="lazy">
+            <img src="images/powertrain2.jpg" alt="Powertrain Testing" loading="lazy">
+            <img src="images/powertrain3.jpg" alt="Powertrain Installation" loading="lazy">
+            <!-- Add more images as needed -->
+          </div>
         </div>
       </div>
 
@@ -425,6 +491,11 @@
       </a>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Expanded Image" id="lightbox-img">
+  </div>
 
   <!-- Back to Top Button -->
   <div class="back-to-top" id="backToTop" aria-label="Back to Top" tabindex="0">
@@ -475,6 +546,44 @@
     function goBack() {
       window.history.back();
     }
+
+    // Lightbox Functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const galleryImages = document.querySelectorAll('.image-gallery img');
+
+    // Function to open lightbox
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.classList.add('active');
+    }
+
+    // Function to close lightbox
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    // Add click event to each image
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        closeLightbox();
+      }
+    });
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
   </script>
 </body>
 </html>

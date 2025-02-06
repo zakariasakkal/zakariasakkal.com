@@ -85,9 +85,9 @@
 
     /* ---------- BACK BUTTON ---------- */
     .back-button {
-      position: fixed; /* Fixed positioning */
-      top: 20px;        /* Align with Download Resume Button */
-      left: 20px;       /* Position at top left */
+      position: fixed;
+      top: 20px;
+      left: 20px;
       background-color: var(--button-color);
       padding: 12px 24px;
       border-radius: 30px;
@@ -112,7 +112,7 @@
     /* ---------- SECTION LAYOUT ---------- */
     section {
       padding: 80px 20px;
-      width: 100%; /* Occupy full width */
+      width: 100%;
       transition: width var(--transition-speed);
       display: flex;
       flex-direction: column;
@@ -206,11 +206,16 @@
       flex-direction: column;
       gap: 15px;
       margin: 0 auto;
-      max-width: 600px; /* Bigger input boxes */
+      max-width: 600px;
     }
     .contact-form .form-group {
       display: flex;
       flex-direction: column;
+    }
+    .contact-form label {
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: var(--primary-color);
     }
     .contact-form input[type="text"],
     .contact-form input[type="email"],
@@ -257,24 +262,24 @@
       flex-direction: column;
       align-items: center;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
-      border-top: 2px solid var(--bluish-line-color); /* Bluish Line */
+      border-top: 2px solid var(--bluish-line-color);
     }
     .footer-content {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
     .footer-content p {
       margin: 0;
       font-size: 1em;
+      line-height: 1.2;
     }
     .footer-content a img {
       width: 32px;
       height: 32px;
-      border-radius: 50%; /* Makes the image circular if it's square */
-      vertical-align: middle;
+      border-radius: 50%;
       transition: transform var(--transition-speed);
     }
     .footer-content a img:hover {
@@ -312,7 +317,6 @@
         left: 180px;
       }
     }
-
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -336,7 +340,6 @@
         max-width: 300px;
       }
     }
-
     @media (max-width: 480px) {
       h1, h2, h3 {
         font-size: 1.2em;
@@ -348,8 +351,6 @@
         left: 140px;
       }
     }
-
-    /* ---------- HAMBURGER MENU ICON ROTATION ---------- */
     @media (max-width: 768px) {
       .hamburger.active i {
         transform: rotate(90deg);
@@ -381,23 +382,14 @@
         <img src="images/robot1.png" alt="Robot Project Image" loading="lazy">
         <div class="role-details">
           <h2>Maze Navigating Robot</h2>
-          <h3><i class="fas fa-robot"></i> Robotics Engineer</h3>
-          <h4>Mar 2021 - Dec 2022</h4>
+          <h3><i class="fas fa-robot"></i> Project</h3>
+          
           <ul>
-            <li>Designed and built a maze-navigating robot using Arduino microcontrollers, motor drivers, and ultrasonic sensors.</li>
-            <li>Programmed the robot’s navigation logic, enabling autonomous pathfinding and obstacle avoidance within complex mazes.</li>
-            <li>Integrated ultrasonic sensors to accurately detect and measure distances, enhancing the robot’s ability to navigate tight corridors.</li>
-            <li>Developed and implemented PID control algorithms to ensure precise motor speed regulation and smooth maneuvering.</li>
-            <li>Overcame challenges related to sensor calibration and motor synchronization, resulting in a 25% improvement in navigation accuracy.</li>
-            <li>Conducted extensive testing and iterative refinements, leading to the robot’s successful completion of multiple competition mazes.</li>
+            <li>Integrated DC motors, Servo motor, and Ultrasonic sensor, to construct a maze navigating robot.</li>
+            <li>Integrated sensor feedback into the decision-making process, allowing the robot to rotate the servo, scan for obstacles, and determine obstacle-free directions.</li>
+            <li>Optimized Arduino code for efficient control of DC motors, servo, and sensor interactions.</li>
           </ul>
           <img src="images/robot_detail.jpg" alt="Detailed Robot Work Example" loading="lazy">
-          <p>
-            In my role as a Robotics Engineer for the Maze Navigating Robot project, I spearheaded the design and development of an autonomous system capable of efficiently navigating intricate mazes. Utilizing Arduino microcontrollers, I integrated motor drivers and ultrasonic sensors to create a responsive and intelligent robot.
-          </p>
-          <p>
-            The programming of the navigation logic was a critical component, involving the creation of algorithms that allowed the robot to make real-time decisions based on sensor inputs. This enabled the robot to autonomously find the shortest path through mazes, while effectively avoiding obstacles and dead ends.
-          </p>
         </div>
       </div>
 
@@ -408,7 +400,7 @@
   <footer>
     <div class="footer-content">
       <p>My LinkedIn:</p>
-      <a href="https://www.linkedin.com/in/zakaria-sakkal/" target="_blank">
+      <a href="https://www.linkedin.com/in/zakaria-sakkal/" target="_blank" aria-label="Zakaria Sakkal's LinkedIn Profile">
         <img src="images/footer.jpg" alt="LinkedIn Icon">
       </a>
     </div>
@@ -426,7 +418,9 @@
     const navMenu = document.getElementById('nav-menu');
 
     hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+      if (navMenu) {
+        navMenu.classList.toggle('active');
+      }
       hamburger.classList.toggle('active');
     });
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Formula SAE - Detailed Experience</title>
+  <title>Phillips and Temro - Detailed Experience</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
@@ -12,7 +12,6 @@
     integrity="sha512-yH8ec7F9tHNkf2prU7uVdnx1xI5VUpkSJiKa4D6B/TB/H0gYd6V1VfKfF9fJkHA2hIlgG5e4GVM5Ea3sv8IYew=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Custom CSS -->
   <style>
     /* ---------- VARIABLES ---------- */
     :root {
@@ -38,7 +37,7 @@
       padding: 0;
     }
 
-    /* Hide any accidental horizontal overflow */
+    /* Hide accidental horizontal overflow */
     html, body {
       overflow-x: hidden;
       scroll-behavior: smooth;
@@ -85,9 +84,9 @@
 
     /* ---------- BACK BUTTON ---------- */
     .back-button {
-      position: fixed; /* Fixed positioning */
-      top: 20px;        /* Align with Download Resume Button */
-      left: 20px;       /* Position at top left */
+      position: fixed;
+      top: 20px;
+      left: 20px;
       background-color: var(--button-color);
       padding: 12px 24px;
       border-radius: 30px;
@@ -112,9 +111,8 @@
     /* ---------- SECTION LAYOUT ---------- */
     section {
       padding: 80px 20px;
-      /* Removed margin-left and width adjustments since nav is removed */
-      width: 100%; /* Occupy full width */
-      transition: margin-left var(--transition-speed), width var(--transition-speed);
+      width: 100%;
+      transition: width var(--transition-speed);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -191,6 +189,49 @@
       margin-left: 20px;
     }
 
+    /* ---------- IMAGE GALLERY ---------- */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .image-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      cursor: pointer;
+    }
+    .image-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.4);
+    }
+
+    /* ---------- LIGHTBOX (Optional) ---------- */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1002;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+
     /* ---------- CONTACT FORM STYLES ---------- */
     .contact-container {
       margin: 20px auto;
@@ -208,7 +249,7 @@
       flex-direction: column;
       gap: 15px;
       margin: 0 auto;
-      max-width: 600px; /* Bigger input boxes */
+      max-width: 600px;
     }
     .contact-form .form-group {
       display: flex;
@@ -264,29 +305,39 @@
       flex-direction: column;
       align-items: center;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
-      border-top: 2px solid var(--bluish-line-color); /* Bluish Line */
+      border-top: 2px solid var(--bluish-line-color);
     }
     .footer-content {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      flex-wrap: nowrap; /* Prevent wrapping */
+      flex-wrap: nowrap;
     }
     .footer-content p {
       margin: 0;
       font-size: 1em;
-      line-height: 1.2; /* Consistent line height */
+      line-height: 1.2;
     }
     .footer-content a img {
-      width: 32px;                  /* Set to 32px to match second code */
-      height: 32px;                 /* Set to 32px to match second code */
-      border-radius: 50%;           /* Makes the image circular if it's square */
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
       transition: transform var(--transition-speed);
-      /* Removed vertical-align as Flexbox handles alignment */
     }
     .footer-content a img:hover {
-      transform: scale(1.1);        /* Slight zoom on hover */
+      transform: scale(1.1);
+    }
+
+    .social-icon {
+      margin: 0 10px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 1.8em;
+      transition: color var(--transition-speed);
+    }
+    .social-icon:hover {
+      color: var(--button-hover-color);
     }
 
     /* ---------- BACK TO TOP BUTTON ---------- */
@@ -357,6 +408,12 @@
       }
     }
 
+    @media (max-width: 480px) {
+      .my-image {
+        max-width: 250px;
+      }
+    }
+
     /* ---------- HAMBURGER MENU ICON ROTATION ---------- */
     @media (max-width: 768px) {
       .hamburger.active i {
@@ -384,32 +441,25 @@
   <section id="detailed-experience">
     <div class="content">
 
-      <!-- UMN Formula SAE Team - Outboard Suspension Lead -->
+      <!-- Phillips and Temro - Detailed Overview -->
       <div class="role">
-        <img src="images/outboard_suspension_lead.jpg" alt="Outboard Suspension Lead" loading="lazy">
+        <img src="images/phillips_temro_internship.jpg" alt="Phillips and Temro Internship" loading="lazy">
         <div class="role-details">
-          <h2>UMN Formula SAE Team</h2>
-          <h3><i class="fas fa-tools"></i> Outboard Suspension Lead</h3>
-          <h4>Sept 2022 - Present</h4>
+          <h2>Phillips and Temro Industries</h2>
+          <h3><i class="fas fa-wrench"></i> Mechanical Design Engineering Intern</h3>
+          <h4>May 2024 - August 2024</h4>
           <ul>
-            <li>Optimized suspension system design by integrating load cell data into Ansys simulations, achieving a 19% mass reduction while maintaining reliable safety factors.</li>
-            <li>Conducted load cell testing to calculate forces through all suspension links and determine maximum loads under worst-case scenarios.</li>
-            <li>Enhanced suspension tunability with Ackermann and camber brackets for precise Ackermann, camber, and mechanical trail adjustments, optimizing handling performance.</li>
+            <li>Designed and tested vibration fixtures; validated results with ANSYS simulations.</li>
+            <li>Performed lab testing on connectors to reduce insertion force from 100N to under 75N per GM standards, experimenting with pin size, grease, and seals.</li>
+            <li>Designed a PCB enclosure for the EvoCharge charging tower and performed thermal simulations to ensure effective cooling.</li>
+            <li>Tested battery warmers in cold chambers, analyzed setups, and presented data.</li>
           </ul>
-        </div>
-      </div>
-
-      <!-- UMN Formula SAE Team - Powertrain Team Member -->
-      <div class="role">
-        <img src="images/powertrain_team_member.jpg" alt="Powertrain Team Member" loading="lazy">
-        <div class="role-details">
-          <h2>UMN Formula SAE Team</h2>
-          <h3><i class="fas fa-car"></i> Powertrain Team Member</h3>
-          <h4>Sept 2022 - Present</h4>
-          <ul>
-            <li>Performed comprehensive heat management, including pressure drop calculations, mass flow calculations, pump selection, and sizing radiators based on dynamometer testing.</li>
-            <li>Used SolidWorks to create 3D models and engineering drawings for FSAE race car components.</li>
-          </ul>
+          <!-- Image Gallery for Additional Work Images -->
+          <div class="image-gallery">
+            <img src="images/phillips1.jpg" alt="Connector Testing" loading="lazy">
+            <img src="images/phillips2.jpg" alt="Vibration Fixture Design" loading="lazy">
+            <img src="images/phillips3.jpg" alt="Thermal Simulation" loading="lazy">
+          </div>
         </div>
       </div>
 
